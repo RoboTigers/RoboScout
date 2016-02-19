@@ -39,6 +39,10 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         teamOrScoutTableView.reloadData()
     }
     
+    @IBAction func unwindFromCancel(unwindSegue: UIStoryboardSegue) {
+        print("Canceled")
+    }
+    
     @IBAction func unwindFromTeamAdd(unwindSegue: UIStoryboardSegue) {
         print("get team controller which just was unwinded")
         let addNewTeamViewController = unwindSegue.sourceViewController as? AddNewTeamViewController
