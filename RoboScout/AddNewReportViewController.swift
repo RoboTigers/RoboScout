@@ -14,9 +14,9 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var eventSegment: UISegmentedControl!
     @IBOutlet weak var typeSegment: UISegmentedControl!
-    @IBOutlet weak var driverStation: UISegmentedControl!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
+    @IBOutlet weak var matchNumber: UITextField!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }
     @IBAction func sliderValueChanged(sender: UISlider) {
