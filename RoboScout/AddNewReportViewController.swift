@@ -16,7 +16,11 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var typeSegment: UISegmentedControl!
     @IBOutlet weak var driverStation: UISegmentedControl!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var sliderLabel: UILabel!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
+    }
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        sliderLabel.text = NSString(format: "%1.1f", sender.value) as String
     }
     
     var scouts = [Scout]()
