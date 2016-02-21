@@ -55,14 +55,10 @@ class SegmentedReportsTableViewController: UITableViewController {
         }
         newReport.type = typeStr
         
-        var driverStationStr : String
-        switch (addNewReportViewController!.driverStation.selectedSegmentIndex) {
-            case 0: driverStationStr = "DS 1"
-            case 1: driverStationStr = "DS 2"
-            case 2: driverStationStr = "DS 3"
-            default: driverStationStr = "Unknown"
-        }
-        newReport.driverStation = driverStationStr
+        newReport.matchNumber = addNewReportViewController?.matchNumber.text
+        
+        
+
 
         
         // Persist to data store
@@ -133,7 +129,7 @@ class SegmentedReportsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].type! + " - " + reportsForSelectedTeam[indexPath.row].driverStation!
+        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].type!
         cell.detailTextLabel?.text = (reportsForSelectedTeam[indexPath.row].scout?.scoutName)! + " (" + reportsForSelectedTeam[indexPath.row].event! + ")"
 
         return cell
@@ -161,7 +157,7 @@ class SegmentedReportsTableViewController: UITableViewController {
                 // Create compund predicate so we can find the object in the graph to delete
                 // We need conditions matching event, reportType, driverStation, team, scout 
                 // (this composite uniquely identifies the selected report)
-            let keyValues: [String: AnyObject] = ["driverStation" : reportToDelete.driverStation!, "team" : reportToDelete.team!, "scout" : reportToDelete.scout!]
+            let keyValues: [String: AnyObject] = ["matchNumber" : reportToDelete.matchNumber!, "team" : reportToDelete.team!, "scout" : reportToDelete.scout!]
                 var predicates = [NSPredicate]()
                 for (key, value) in keyValues {
                     print("Adding key (\(key)) and value (\(value)) to predicate")
