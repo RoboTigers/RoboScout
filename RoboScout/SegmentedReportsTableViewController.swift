@@ -38,6 +38,23 @@ class SegmentedReportsTableViewController: UITableViewController {
         let newReport = Report(entity: entity!, insertIntoManagedObjectContext: context)
         newReport.scout = addNewReportViewController!.selectedScout
         newReport.team = selectedTeam
+        
+        var eventStr : String
+        switch (addNewReportViewController!.eventSegment.selectedSegmentIndex) {
+        case 0: eventStr = "NYC Regional"
+        case 1: eventStr = "Long Island"
+        default: eventStr = "Unknown"
+        }
+        newReport.event = eventStr
+        
+        var typeStr : String
+        switch (addNewReportViewController!.eventSegment.selectedSegmentIndex) {
+        case 0: typeStr = "Pit"
+        case 1: typeStr = "Stand"
+        default: typeStr = "Unknown"
+        }
+        newReport.type = typeStr
+        
         var driverStationStr : String
         switch (addNewReportViewController!.driverStation.selectedSegmentIndex) {
             case 0: driverStationStr = "DS 1"
@@ -46,6 +63,7 @@ class SegmentedReportsTableViewController: UITableViewController {
             default: driverStationStr = "Unknown"
         }
         newReport.driverStation = driverStationStr
+
         
         // Persist to data store
         do {
@@ -115,8 +133,8 @@ class SegmentedReportsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].driverStation
-        cell.detailTextLabel?.text = reportsForSelectedTeam[indexPath.row].scout?.scoutName
+        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].type! + " - " + reportsForSelectedTeam[indexPath.row].driverStation!
+        cell.detailTextLabel?.text = (reportsForSelectedTeam[indexPath.row].scout?.scoutName)! + " (" + reportsForSelectedTeam[indexPath.row].event! + ")"
 
         return cell
     }
@@ -130,17 +148,48 @@ class SegmentedReportsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context:NSManagedObjectContext = appDel.managedObjectContext
+            
+
+                let reportToDelete = reportsForSelectedTeam.removeAtIndex(indexPath.row)
+                let request = NSFetchRequest(entityName: "Report")
+                // Create compund predicate so we can find the object in the graph to delete
+                // We need conditions matching event, reportType, driverStation, team, scout 
+                // (this composite uniquely identifies the selected report)
+            let keyValues: [String: AnyObject] = ["driverStation" : reportToDelete.driverStation!, "team" : reportToDelete.team!, "scout" : reportToDelete.scout!]
+                var predicates = [NSPredicate]()
+                for (key, value) in keyValues {
+                    print("Adding key (\(key)) and value (\(value)) to predicate")
+                    let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
+                    predicates.append(predicate)
+                }
+                let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
+                request.predicate = compoundPredicate
+                
+                do {
+                    let fetchedEntities = try context.executeFetchRequest(request) as! [Report]
+                    if let entityToDelete = fetchedEntities.first {
+                        context.deleteObject(entityToDelete)
+                    }
+                } catch {
+                    print("Unable to retrieve report object to delete: \(reportToDelete)")
+                }
+                
+                do {
+                    try context.save()
+                } catch {
+                    print("Unable to save context when deleting report: \(reportToDelete)")
+                }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        } /* else if editingStyle == .Insert {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        } */
     }
-    */
 
     /*
     // Override to support rearranging the table view.

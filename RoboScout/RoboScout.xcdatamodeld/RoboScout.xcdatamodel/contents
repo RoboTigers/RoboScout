@@ -12,8 +12,10 @@
         <attribute name="canPassRoughTerrain" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="driverStation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hasAutonomous" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="isShooterBot" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="scout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Scout" inverseName="reports" inverseEntity="Scout" syncable="YES"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="reports" inverseEntity="Team" syncable="YES"/>
     </entity>
@@ -33,6 +35,6 @@
     <elements>
         <element name="Scout" positionX="-477" positionY="99" width="128" height="103"/>
         <element name="Team" positionX="-477" positionY="-81" width="128" height="118"/>
-        <element name="Report" positionX="-234" positionY="-13" width="153" height="268"/>
+        <element name="Report" positionX="-234" positionY="-13" width="153" height="298"/>
     </elements>
 </model>

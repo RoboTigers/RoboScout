@@ -169,45 +169,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jhun View Goes Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-tH-3eH">
-                                <rect key="frame" x="20" y="289" width="165" height="21"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqz-5Z-xZN">
+                                <rect key="frame" x="122" y="72" width="357" height="153"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="165" id="95G-AN-pz9"/>
+                                    <constraint firstAttribute="width" constant="357" id="zZ1-JV-Ex2"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jhun View Goes Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-tH-3eH">
+                                <rect key="frame" x="20" y="438" width="165" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="Jb3-dv-mUj"/>
+                                    <constraint firstAttribute="height" constant="22" id="bfY-I3-KRp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="akg-ON-bMM">
-                                <rect key="frame" x="464" y="285" width="118" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="DXu-Ze-6vf"/>
-                                </constraints>
-                            </slider>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eUL-1U-Wtc">
-                                <rect key="frame" x="240" y="238" width="121" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eUL-1U-Wtc">
+                                <rect key="frame" x="240" y="345" width="121" height="29"/>
                                 <segments>
                                     <segment title="DS 1"/>
                                     <segment title="DS 2"/>
                                     <segment title="DS 3"/>
                                 </segments>
                             </segmentedControl>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqz-5Z-xZN">
-                                <rect key="frame" x="122" y="72" width="357" height="153"/>
-                            </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-rg-vtZ">
+                                <rect key="frame" x="221" y="233" width="158" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="LKN-8e-Za1"/>
+                                    <constraint firstAttribute="width" constant="158" id="hRE-2g-8YM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="NYC Regional"/>
+                                    <segment title="Long Island"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3P4-kx-sC2">
+                                <rect key="frame" x="240" y="286" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="MIm-HX-hCs"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Pit"/>
+                                    <segment title="Stand"/>
+                                </segments>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8yX-Xw-yfT">
+                                <rect key="frame" x="466" y="430" width="114" height="30"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="akg-ON-bMM">
+                                        <rect key="frame" x="-2" y="0.0" width="118" height="31"/>
+                                    </slider>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="akg-ON-bMM" firstAttribute="trailing" secondItem="0Q4-2s-cjb" secondAttribute="trailingMargin" id="3Am-1E-oTj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sqz-5Z-xZN" secondAttribute="trailing" constant="101" id="PdY-Ra-Rzi"/>
-                            <constraint firstItem="yVI-tH-3eH" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="225" id="Qer-UT-cFD"/>
-                            <constraint firstItem="akg-ON-bMM" firstAttribute="top" secondItem="sqz-5Z-xZN" secondAttribute="bottom" constant="60" id="aOF-AM-Q3i"/>
-                            <constraint firstItem="sqz-5Z-xZN" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="8" symbolic="YES" id="f1z-Nm-ddo"/>
-                            <constraint firstItem="sqz-5Z-xZN" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leadingMargin" constant="102" id="s3z-4A-9qa"/>
-                            <constraint firstItem="yVI-tH-3eH" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leadingMargin" id="wLP-ZW-mBY"/>
-                            <constraint firstItem="akg-ON-bMM" firstAttribute="centerY" secondItem="yVI-tH-3eH" secondAttribute="centerY" id="xTn-rT-4Xe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sqz-5Z-xZN" secondAttribute="trailing" constant="101" id="xaU-mw-Vnb"/>
-                            <constraint firstItem="akg-ON-bMM" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="221" id="yeW-Mw-rXx"/>
+                            <constraint firstItem="Lgv-aT-JD7" firstAttribute="top" secondItem="yVI-tH-3eH" secondAttribute="bottom" constant="96" id="1Zh-QV-lc9"/>
+                            <constraint firstItem="3P4-kx-sC2" firstAttribute="centerX" secondItem="lzu-rg-vtZ" secondAttribute="centerX" id="3ee-Ve-FBf"/>
+                            <constraint firstItem="yVI-tH-3eH" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leadingMargin" id="8FO-E3-Xpb"/>
+                            <constraint firstItem="3P4-kx-sC2" firstAttribute="top" secondItem="lzu-rg-vtZ" secondAttribute="bottom" constant="25" id="Evf-w0-eB2"/>
+                            <constraint firstItem="8yX-Xw-yfT" firstAttribute="trailing" secondItem="0Q4-2s-cjb" secondAttribute="trailingMargin" id="Fqb-c3-hqW"/>
+                            <constraint firstItem="lzu-rg-vtZ" firstAttribute="centerX" secondItem="0Q4-2s-cjb" secondAttribute="centerX" id="JaZ-pb-EzO"/>
+                            <constraint firstItem="lzu-rg-vtZ" firstAttribute="top" secondItem="sqz-5Z-xZN" secondAttribute="bottom" constant="8" symbolic="YES" id="NtY-0K-Ezw"/>
+                            <constraint firstItem="eUL-1U-Wtc" firstAttribute="top" secondItem="3P4-kx-sC2" secondAttribute="bottom" constant="31" id="RZ0-Ef-xho"/>
+                            <constraint firstItem="sqz-5Z-xZN" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="8" symbolic="YES" id="Ua4-rc-Njq"/>
+                            <constraint firstItem="3P4-kx-sC2" firstAttribute="trailing" secondItem="eUL-1U-Wtc" secondAttribute="trailing" id="fcU-k8-Far"/>
+                            <constraint firstItem="3P4-kx-sC2" firstAttribute="centerY" secondItem="0Q4-2s-cjb" secondAttribute="centerY" id="hbf-l8-Zmy"/>
+                            <constraint firstItem="sqz-5Z-xZN" firstAttribute="centerX" secondItem="lzu-rg-vtZ" secondAttribute="centerX" id="jvg-ux-AJq"/>
+                            <constraint firstItem="8yX-Xw-yfT" firstAttribute="bottom" secondItem="yVI-tH-3eH" secondAttribute="bottom" id="kv2-52-6ba"/>
+                            <constraint firstItem="8yX-Xw-yfT" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leading" constant="466" id="uL0-Ws-nLF"/>
+                            <constraint firstItem="eUL-1U-Wtc" firstAttribute="leading" secondItem="3P4-kx-sC2" secondAttribute="leading" id="wkB-ze-3um"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DKP-pY-BhP">
@@ -225,8 +257,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="driverStation" destination="eUL-1U-Wtc" id="Fgg-zP-Gua"/>
+                        <outlet property="eventSegment" destination="lzu-rg-vtZ" id="W0e-bK-qOW"/>
                         <outlet property="picker" destination="sqz-5Z-xZN" id="BCD-mt-aaJ"/>
                         <outlet property="slider" destination="akg-ON-bMM" id="VoS-Ml-Eer"/>
+                        <outlet property="typeSegment" destination="3P4-kx-sC2" id="Fpr-EP-beJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqC-aT-3p7" userLabel="First Responder" sceneMemberID="firstResponder"/>

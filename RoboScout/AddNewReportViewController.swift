@@ -12,6 +12,8 @@ import CoreData
 class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var eventSegment: UISegmentedControl!
+    @IBOutlet weak var typeSegment: UISegmentedControl!
     @IBOutlet weak var driverStation: UISegmentedControl!
     @IBOutlet weak var slider: UISlider!
     @IBAction func doneAddingNewReport(sender: AnyObject) {

@@ -229,7 +229,6 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
                 } catch {
                     print("Unable to save context when deleting team: " + teamToDelete.teamNumber!)
                 }
-                break
             case 1:
                 let scoutToDelete = scouts.removeAtIndex(indexPath.row)
                 let request = NSFetchRequest(entityName: "Scout")
@@ -258,9 +257,8 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
                 } catch {
                     print("Unable to save context when deleting scout: " + scoutToDelete.scoutName!)
                 }
-                break
             default:
-                break
+                print("Default action for delete row swipe")
             }
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

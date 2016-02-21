@@ -27,6 +27,8 @@ extension Report {
     @NSManaged var canPassLowBar: NSNumber?
     @NSManaged var driverStation: String?
     @NSManaged var comments: String?
+    @NSManaged var event: String?
+    @NSManaged var type: String?
     @NSManaged var team: Team?
     @NSManaged var scout: Scout?
 

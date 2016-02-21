@@ -18,7 +18,7 @@
 		80BEC8731C7733D400B78CEE /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BEC86D1C7733D400B78CEE /* Team.swift */; };
 		80BEC8751C78F82200B78CEE /* SegmentedReportsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BEC8741C78F82200B78CEE /* SegmentedReportsTableViewController.swift */; };
 		80BEC8771C791B4400B78CEE /* AddNewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BEC8761C791B4400B78CEE /* AddNewReportViewController.swift */; };
-		80BEC87D1C79D74600B78CEE /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BEC87C1C79D74600B78CEE /* Report+CoreDataProperties.swift */; };
+		80BEC87F1C79E67600B78CEE /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BEC87E1C79E67600B78CEE /* Report+CoreDataProperties.swift */; };
 		80E95AC51C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E95AC41C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift */; };
 		80EC51D81C64C3040000C00D /* AddNewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC51D71C64C3040000C00D /* AddNewTeamViewController.swift */; };
 		80EC51DA1C64C3280000C00D /* AddNewScoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC51D91C64C3280000C00D /* AddNewScoutViewController.swift */; };
@@ -38,7 +38,7 @@
 		80BEC86D1C7733D400B78CEE /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		80BEC8741C78F82200B78CEE /* SegmentedReportsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedReportsTableViewController.swift; sourceTree = "<group>"; };
 		80BEC8761C791B4400B78CEE /* AddNewReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewReportViewController.swift; sourceTree = "<group>"; };
-		80BEC87C1C79D74600B78CEE /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		80BEC87E1C79E67600B78CEE /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		80E95AC41C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedTeamsOrScoutsViewController.swift; sourceTree = "<group>"; };
 		80EC51D71C64C3040000C00D /* AddNewTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewTeamViewController.swift; sourceTree = "<group>"; };
 		80EC51D91C64C3280000C00D /* AddNewScoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewScoutViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 				809856A81C5C6126004C5EEA /* Info.plist */,
 				8098569D1C5C6126004C5EEA /* Main.storyboard */,
 				80BEC8691C7733D400B78CEE /* Report.swift */,
-				80BEC87C1C79D74600B78CEE /* Report+CoreDataProperties.swift */,
+				80BEC87E1C79E67600B78CEE /* Report+CoreDataProperties.swift */,
 				809856A01C5C6126004C5EEA /* RoboScout.xcdatamodeld */,
 				80BEC86B1C7733D400B78CEE /* Scout.swift */,
 				80BEC86A1C7733D400B78CEE /* Scout+CoreDataProperties.swift */,
@@ -177,7 +177,7 @@
 				80BEC8731C7733D400B78CEE /* Team.swift in Sources */,
 				809856A21C5C6126004C5EEA /* RoboScout.xcdatamodeld in Sources */,
 				80EC51DA1C64C3280000C00D /* AddNewScoutViewController.swift in Sources */,
-				80BEC87D1C79D74600B78CEE /* Report+CoreDataProperties.swift in Sources */,
+				80BEC87F1C79E67600B78CEE /* Report+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
