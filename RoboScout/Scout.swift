@@ -2,7 +2,7 @@
 //  Scout.swift
 //  RoboScout
 //
-//  Created by Sharon Kass on 2/5/16.
+//  Created by Sharon Kass on 2/19/16.
 //  Copyright © 2016 RoboTigers. All rights reserved.
 //
 

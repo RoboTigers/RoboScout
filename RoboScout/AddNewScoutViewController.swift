@@ -19,6 +19,13 @@ class AddNewScoutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Scout"
+        // Dismiss keyboard when user taps outside of keyboard
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+    }
+    
+    func dismissKeyboard() {
+        scoutName.resignFirstResponder()
+        fullName.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

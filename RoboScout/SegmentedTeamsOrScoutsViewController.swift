@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     // MARK: - Model
     var teams = [Team]()
@@ -25,18 +25,20 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         case 0:
             print("Add new team")
             performSegueWithIdentifier("AddNewTeamSegue", sender: self)
-            break
         case 1:
             print("Add new scout")
             performSegueWithIdentifier("AddNewScoutSegue", sender: self)
-            break
         default:
-            break
+            print("Not team and not scout")
         }
     }
     
     @IBAction func segmentTeamOrScoutSelectedAction(sender: AnyObject) {
         teamOrScoutTableView.reloadData()
+    }
+    
+    @IBAction func unwindFromCancel(unwindSegue: UIStoryboardSegue) {
+        print("Canceled")
     }
     
     @IBAction func unwindFromTeamAdd(unwindSegue: UIStoryboardSegue) {
@@ -227,7 +229,6 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
                 } catch {
                     print("Unable to save context when deleting team: " + teamToDelete.teamNumber!)
                 }
-                break
             case 1:
                 let scoutToDelete = scouts.removeAtIndex(indexPath.row)
                 let request = NSFetchRequest(entityName: "Scout")
@@ -256,9 +257,8 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
                 } catch {
                     print("Unable to save context when deleting scout: " + scoutToDelete.scoutName!)
                 }
-                break
             default:
-                break
+                print("Default action for delete row swipe")
             }
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -269,15 +269,33 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var destination = segue.destinationViewController as? UIViewController
+        if let navigationController = destination as? UINavigationController {
+            destination = navigationController.visibleViewController
+        }
+        if let reportsViewController = destination as? SegmentedReportsTableViewController {
+            if let segueIdentifier = segue.identifier {
+                switch segueIdentifier {
+                    case "Show_Reports":
+                        print ("Show_Reports segue")
+                        if let cell = sender as? UITableViewCell {
+                            let i = teamOrScoutTableView.indexPathForCell(cell)!.row
+                            reportsViewController.selectedTeam = teams[i]
+                        }
+                    default:
+                        print ("Unknown segueIdentifier: \(segueIdentifier)")
+                    
+                }
+            }
+        }
     }
-    */
+
+    
     
     // MARK: - Private utility functions
     

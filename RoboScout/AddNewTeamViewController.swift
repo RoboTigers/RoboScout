@@ -20,6 +20,14 @@ class AddNewTeamViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "New Team"
+        // Dismiss keyboard when user taps outside of keyboard
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+    }
+    
+    func dismissKeyboard() {
+        teamName.resignFirstResponder()
+        teamNumber.resignFirstResponder()
+        location.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
