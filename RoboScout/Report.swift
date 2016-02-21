@@ -1,5 +1,5 @@
 //
-//  Team.swift
+//  Report.swift
 //  RoboScout
 //
 //  Created by Sharon Kass on 2/19/16.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Team: NSManagedObject {
+class Report: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

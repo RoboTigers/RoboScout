@@ -55,6 +55,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6np-KO-udT" kind="show" identifier="Show_Reports" id="1LQ-NJ-0xe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -91,6 +94,136 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fh-uN-cUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="828" y="1068"/>
+        </scene>
+        <!--Segmented Reports Table View Controller-->
+        <scene sceneID="g7y-Y6-OAI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nMG-c5-Qf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="6np-KO-udT" customClass="SegmentedReportsTableViewController" customModule="RoboScout" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jb6-cW-qCu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="SEu-Kb-TD2">
+                            <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Details"/>
+                                <segment title="Summary"/>
+                            </segments>
+                        </segmentedControl>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SegmentedDetailOrSummaryCell" textLabel="X4T-aB-Vyt" detailTextLabel="bd6-94-sfj" style="IBUITableViewCellStyleSubtitle" id="o6E-fk-z4W">
+                                <rect key="frame" x="0.0" y="122" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o6E-fk-z4W" id="Oeu-FY-wfk">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X4T-aB-Vyt">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bd6-94-sfj">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6np-KO-udT" id="qLb-4c-g7I"/>
+                            <outlet property="delegate" destination="6np-KO-udT" id="iQW-SV-QTE"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="6Hi-ku-SSY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kMt-qC-rjn">
+                            <connections>
+                                <action selector="addNewReportAction:" destination="6np-KO-udT" id="TDh-al-CBX"/>
+                                <segue destination="vmX-pC-MTw" kind="show" identifier="AddNewReportSegue" id="k4d-d2-KM0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1692" y="1068"/>
+        </scene>
+        <!--Add New Report View Controller-->
+        <scene sceneID="GkZ-Cr-ILe">
+            <objects>
+                <viewController id="xfR-Ra-GbL" customClass="AddNewReportViewController" customModule="RoboScout" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Vu-h0-J6a"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lgv-aT-JD7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Q4-2s-cjb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jhun View Goes Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-tH-3eH">
+                                <rect key="frame" x="20" y="289" width="165" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="95G-AN-pz9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="akg-ON-bMM">
+                                <rect key="frame" x="464" y="285" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="DXu-Ze-6vf"/>
+                                </constraints>
+                            </slider>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqz-5Z-xZN">
+                                <rect key="frame" x="122" y="72" width="357" height="153"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="akg-ON-bMM" firstAttribute="trailing" secondItem="0Q4-2s-cjb" secondAttribute="trailingMargin" id="3Am-1E-oTj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sqz-5Z-xZN" secondAttribute="trailing" constant="101" id="PdY-Ra-Rzi"/>
+                            <constraint firstItem="yVI-tH-3eH" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="225" id="Qer-UT-cFD"/>
+                            <constraint firstItem="akg-ON-bMM" firstAttribute="top" secondItem="sqz-5Z-xZN" secondAttribute="bottom" constant="60" id="aOF-AM-Q3i"/>
+                            <constraint firstItem="sqz-5Z-xZN" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="8" symbolic="YES" id="f1z-Nm-ddo"/>
+                            <constraint firstItem="sqz-5Z-xZN" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leadingMargin" constant="102" id="s3z-4A-9qa"/>
+                            <constraint firstItem="yVI-tH-3eH" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leadingMargin" id="wLP-ZW-mBY"/>
+                            <constraint firstItem="akg-ON-bMM" firstAttribute="centerY" secondItem="yVI-tH-3eH" secondAttribute="centerY" id="xTn-rT-4Xe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sqz-5Z-xZN" secondAttribute="trailing" constant="101" id="xaU-mw-Vnb"/>
+                            <constraint firstItem="akg-ON-bMM" firstAttribute="top" secondItem="0Vu-h0-J6a" secondAttribute="bottom" constant="221" id="yeW-Mw-rXx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DKP-pY-BhP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1LD-xz-vsm">
+                            <connections>
+                                <segue destination="c8v-HH-p9y" kind="unwind" unwindAction="unwindFromReportsCancel:" id="Q7y-iF-wbk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="4w8-B6-g6I">
+                            <connections>
+                                <action selector="doneAddingNewReport:" destination="xfR-Ra-GbL" id="MKP-eL-b0e"/>
+                                <segue destination="c8v-HH-p9y" kind="unwind" unwindAction="unwindFromReportAdd:" id="WFk-IL-l1J"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="picker" destination="sqz-5Z-xZN" id="BCD-mt-aaJ"/>
+                        <outlet property="slider" destination="akg-ON-bMM" id="VoS-Ml-Eer"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SqC-aT-3p7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c8v-HH-p9y" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3155" y="1068"/>
         </scene>
         <!--Add New Team View Controller-->
         <scene sceneID="E4z-Xf-HgP">
@@ -321,6 +454,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRB-l7-0fg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1300" y="1853"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="osq-qk-ngq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vmX-pC-MTw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t3Y-zA-aWl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xfR-Ra-GbL" kind="relationship" relationship="rootViewController" id="5G5-eX-35U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iWB-aB-uJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2438" y="1068"/>
         </scene>
     </scenes>
 </document>

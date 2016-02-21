@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Automatic">
+    <entity name="Report" representedClassName=".Report" syncable="YES">
+        <attribute name="cannPassSallyPort" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassChevalDeFrise" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassDrawbridge" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassLowBar" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassMoat" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="canPassPortcullis" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassRamparts" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassRockWall" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="canPassRoughTerrain" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hasAutonomous" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="isShooterBot" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="scout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Scout" inverseName="reports" inverseEntity="Scout" syncable="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="reports" inverseEntity="Team" syncable="YES"/>
+    </entity>
     <entity name="Scout" representedClassName=".Scout" syncable="YES">
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scoutName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="scout" inverseEntity="Report" syncable="YES"/>
     </entity>
     <entity name="Team" representedClassName=".Team" syncable="YES">
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teamName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teamNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="team" inverseEntity="Report" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Scout" positionX="-54" positionY="18" width="128" height="90"/>
-        <element name="Team" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Scout" positionX="-477" positionY="99" width="128" height="103"/>
+        <element name="Team" positionX="-477" positionY="-81" width="128" height="118"/>
+        <element name="Report" positionX="-234" positionY="-13" width="153" height="238"/>
     </elements>
 </model>
