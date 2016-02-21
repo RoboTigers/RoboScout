@@ -38,7 +38,14 @@ class SegmentedReportsTableViewController: UITableViewController {
         let newReport = Report(entity: entity!, insertIntoManagedObjectContext: context)
         newReport.scout = addNewReportViewController!.selectedScout
         newReport.team = selectedTeam
-        newReport.cannPassSallyPort = 1
+        var driverStationStr : String
+        switch (addNewReportViewController!.driverStation.selectedSegmentIndex) {
+            case 0: driverStationStr = "DS 1"
+            case 1: driverStationStr = "DS 2"
+            case 2: driverStationStr = "DS 3"
+            default: driverStationStr = "Unknown"
+        }
+        newReport.driverStation = driverStationStr
         
         // Persist to data store
         do {
@@ -108,8 +115,8 @@ class SegmentedReportsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].scout?.scoutName
-        cell.detailTextLabel?.text = "Defense: Excellent  Offense: Just Okay"
+        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].driverStation
+        cell.detailTextLabel?.text = reportsForSelectedTeam[indexPath.row].scout?.scoutName
 
         return cell
     }

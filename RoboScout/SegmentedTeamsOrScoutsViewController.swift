@@ -25,13 +25,11 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         case 0:
             print("Add new team")
             performSegueWithIdentifier("AddNewTeamSegue", sender: self)
-            break
         case 1:
             print("Add new scout")
             performSegueWithIdentifier("AddNewScoutSegue", sender: self)
-            break
         default:
-            break
+            print("Not team and not scout")
         }
     }
     

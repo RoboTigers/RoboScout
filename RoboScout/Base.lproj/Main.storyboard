@@ -184,6 +184,14 @@
                                     <constraint firstAttribute="width" constant="114" id="DXu-Ze-6vf"/>
                                 </constraints>
                             </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eUL-1U-Wtc">
+                                <rect key="frame" x="240" y="238" width="121" height="29"/>
+                                <segments>
+                                    <segment title="DS 1"/>
+                                    <segment title="DS 2"/>
+                                    <segment title="DS 3"/>
+                                </segments>
+                            </segmentedControl>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqz-5Z-xZN">
                                 <rect key="frame" x="122" y="72" width="357" height="153"/>
                             </pickerView>
@@ -216,6 +224,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="driverStation" destination="eUL-1U-Wtc" id="Fgg-zP-Gua"/>
                         <outlet property="picker" destination="sqz-5Z-xZN" id="BCD-mt-aaJ"/>
                         <outlet property="slider" destination="akg-ON-bMM" id="VoS-Ml-Eer"/>
                     </connections>
