@@ -105,6 +105,14 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
                 let s = scout as! Scout
                 scouts.append(s)
                 print("Scout found: \(s)")
+                if (scouts.count == 1 && selectedScout == nil) {
+                    // Set selectedScout to the first scout found since that
+                    // will be the default in the picker if user does not spin
+                    // the picker dial. The picker control only activates if
+                    // user selects something other than the initial display
+                    // in the picker
+                    selectedScout = s
+                }
             }
             //view.reloadData()
         } else {
