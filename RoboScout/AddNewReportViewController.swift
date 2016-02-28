@@ -17,6 +17,18 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var matchNumber: UITextField!
+    @IBOutlet weak var defensive: UISegmentedControl!
+    @IBOutlet weak var autonomous: UISegmentedControl!
+    @IBOutlet weak var portcullis: UISegmentedControl!
+    @IBOutlet weak var cheval: UISegmentedControl!
+    @IBOutlet weak var moat: UISegmentedControl!
+    @IBOutlet weak var sallyPort: UISegmentedControl!
+    @IBOutlet weak var drawbridge: UISegmentedControl!
+    @IBOutlet weak var ramparts: UISegmentedControl!
+    @IBOutlet weak var rockWall: UISegmentedControl!
+    @IBOutlet weak var roughTerrain: UISegmentedControl!
+    @IBOutlet weak var lowBar: UISegmentedControl!
+    @IBOutlet weak var comments: UITextView!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }
     @IBAction func sliderValueChanged(sender: UISlider) {
@@ -32,6 +44,7 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
 
         self.picker.delegate = self
         self.picker.dataSource = self
+        //sliderLabel.text = "2.5"
         refreshScouts()
         populateScoutNames()
     }
