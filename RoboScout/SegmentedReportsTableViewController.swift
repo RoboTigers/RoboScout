@@ -33,9 +33,11 @@ class SegmentedReportsTableViewController: UITableViewController {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
-        // Grab values from text boxes
+        // Prepare data store object
         let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: context)
         let newReport = Report(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        // Grab values from text boxes
         newReport.scout = addNewReportViewController!.selectedScout
         newReport.team = selectedTeam
         
@@ -57,9 +59,41 @@ class SegmentedReportsTableViewController: UITableViewController {
         
         newReport.matchNumber = addNewReportViewController?.matchNumber.text
         
+        var shooter : Int
+        switch (addNewReportViewController!.shooter.selectedSegmentIndex) {
+        case 0: shooter = 1
+        case 1: shooter = 0
+        default: shooter = 0
+        }
+        newReport.isShooterBot = shooter
         
+        var autonomous : Int
+        switch (addNewReportViewController!.autonomous.selectedSegmentIndex) {
+        case 0: autonomous = 1
+        case 1: autonomous = 0
+        default: autonomous = 0
+        }
+        newReport.hasAutonomous = autonomous
+        
+        // We do not need a switch statement on the defense segments since we luckily
+        // need values 0, 1, 2 which is the default values of the segment controller
+        // according to how we laied it out on the storyboard. A value of 0 means the robot
+        // never traversed thta defense (whether it didn't try or whether it couldn't). A value
+        // of 1 means it passed it once thereby weakening the defense. A value of 2 means
+        // it passed it twice thereby taking down that defense.
+        newReport.canPassPortcullis = addNewReportViewController!.portcullis.selectedSegmentIndex
+        newReport.canPassChevalDeFrise = addNewReportViewController!.cheval.selectedSegmentIndex
+        newReport.canPassMoat = addNewReportViewController!.moat.selectedSegmentIndex
+        newReport.canPassSallyPort = addNewReportViewController!.sallyPort.selectedSegmentIndex
+        newReport.canPassDrawbridge = addNewReportViewController!.drawbridge.selectedSegmentIndex
+        newReport.canPassRamparts = addNewReportViewController!.ramparts.selectedSegmentIndex
+        newReport.canPassRockWall = addNewReportViewController!.rockWall.selectedSegmentIndex
+        newReport.canPassRoughTerrain = addNewReportViewController!.roughTerrain.selectedSegmentIndex
+        newReport.canPassLowBar = addNewReportViewController!.lowBar.selectedSegmentIndex
+        
+        newReport.overallRating = addNewReportViewController!.slider.value
 
-
+        newReport.comments = addNewReportViewController!.comments.text
         
         // Persist to data store
         do {

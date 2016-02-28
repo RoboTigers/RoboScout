@@ -206,8 +206,8 @@
                                     <action selector="sliderValueChanged:" destination="xfR-Ra-GbL" eventType="valueChanged" id="cMB-yF-PqB"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defensive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69P-t9-wee">
-                                <rect key="frame" x="20" y="224" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Shooter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69P-t9-wee">
+                                <rect key="frame" x="35" y="224" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -218,7 +218,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-Hh-lKh">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-Hh-lKh">
                                 <rect key="frame" x="123" y="221" width="121" height="29"/>
                                 <segments>
                                     <segment title="Yes"/>
@@ -509,7 +509,6 @@
                         <outlet property="autonomous" destination="gq9-PB-jcH" id="wHv-TZ-WIW"/>
                         <outlet property="cheval" destination="4c1-X1-LaT" id="a05-Wa-jar"/>
                         <outlet property="comments" destination="X4d-2X-qr7" id="add-0D-QzP"/>
-                        <outlet property="defensive" destination="1VV-Hh-lKh" id="4Ed-Ue-0yc"/>
                         <outlet property="drawbridge" destination="kgO-KA-8fG" id="MTQ-cx-SDQ"/>
                         <outlet property="eventSegment" destination="lzu-rg-vtZ" id="W0e-bK-qOW"/>
                         <outlet property="lowBar" destination="9Xm-WZ-fpH" id="ozW-xH-FMb"/>
@@ -521,6 +520,7 @@
                         <outlet property="rockWall" destination="4Zg-wS-Wny" id="jXc-9w-CQF"/>
                         <outlet property="roughTerrain" destination="8mN-mR-Nm4" id="X19-vV-50O"/>
                         <outlet property="sallyPort" destination="MI1-uf-chp" id="76u-BM-jan"/>
+                        <outlet property="shooter" destination="1VV-Hh-lKh" id="t9Q-9b-1uo"/>
                         <outlet property="slider" destination="akg-ON-bMM" id="VoS-Ml-Eer"/>
                         <outlet property="sliderLabel" destination="djd-x6-46C" id="SLD-RU-nte"/>
                         <outlet property="typeSegment" destination="3P4-kx-sC2" id="Fpr-EP-beJ"/>

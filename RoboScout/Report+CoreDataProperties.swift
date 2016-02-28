@@ -14,7 +14,7 @@ import CoreData
 
 extension Report {
 
-    @NSManaged var cannPassSallyPort: NSNumber?
+    @NSManaged var canPassSallyPort: NSNumber?
     @NSManaged var canPassChevalDeFrise: NSNumber?
     @NSManaged var canPassDrawbridge: NSNumber?
     @NSManaged var canPassLowBar: NSNumber?
@@ -29,6 +29,7 @@ extension Report {
     @NSManaged var isShooterBot: NSNumber?
     @NSManaged var type: String?
     @NSManaged var matchNumber: String?
+    @NSManaged var overallRating: NSNumber?
     @NSManaged var scout: Scout?
     @NSManaged var team: Team?
 

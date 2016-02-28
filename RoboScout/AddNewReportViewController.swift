@@ -17,7 +17,7 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var matchNumber: UITextField!
-    @IBOutlet weak var defensive: UISegmentedControl!
+    @IBOutlet weak var shooter: UISegmentedControl!
     @IBOutlet weak var autonomous: UISegmentedControl!
     @IBOutlet weak var portcullis: UISegmentedControl!
     @IBOutlet weak var cheval: UISegmentedControl!
@@ -30,6 +30,7 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var lowBar: UISegmentedControl!
     @IBOutlet weak var comments: UITextView!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
+        // TODO: Add popup error if required data is missing (e.g., Match #)
     }
     @IBAction func sliderValueChanged(sender: UISlider) {
         sliderLabel.text = NSString(format: "%1.1f", sender.value) as String
