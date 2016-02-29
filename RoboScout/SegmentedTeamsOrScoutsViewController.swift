@@ -418,17 +418,29 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
 //    }
     
     func dataChanged(manager: TellEveryoneServiceManager, data: NSData) {
-        print("In TEVC, dataChanged")
+        print("In SegmentedTeamsOrScoutsViewController, dataChanged")
         
         // TODO: For now we will just send team data, need to expand to include scout and report data
+        
         // Get data store context
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         let entity = NSEntityDescription.entityForName("Team", inManagedObjectContext: context)
         let receivedTeam = Team(entity: entity!, insertIntoManagedObjectContext: context)
+        
         // Get received team from json data
         receivedTeam.loadFromJson(data)
         print ("receivedTeam = \(receivedTeam)")
+        
+        // Persist to data store
+        do {
+            try context.save()
+        } catch _ {
+            // Handle core data error
+            print("Error saving new team")
+        }
+        print("receivedTeam: \(receivedTeam)")
+        print("Object saved successfully")
         
         NSOperationQueue.mainQueue().addOperationWithBlock {
             //self.reflectReceivedMessage(receivedTeam.teamName!)
