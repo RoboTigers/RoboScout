@@ -80,6 +80,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RoboScout" id="TIa-Or-oUl">
+                        <barButtonItem key="leftBarButtonItem" title="Push Data" id="RNf-LZ-wc7">
+                            <connections>
+                                <action selector="pushData:" destination="egc-Vl-Q6N" id="QFM-5S-AlU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aYU-yJ-L8p">
                             <connections>
                                 <action selector="addNewTeamOrScoutAction:" destination="egc-Vl-Q6N" id="6lw-bs-8hn"/>

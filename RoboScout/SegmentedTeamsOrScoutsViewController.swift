@@ -24,6 +24,25 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     @IBOutlet weak var segmentedTeamOrScoutControl: UISegmentedControl!
     @IBOutlet weak var teamOrScoutTableView: UITableView!
     
+    // Push data from this device to all connected devices
+    @IBAction func pushData(sender: AnyObject) {
+        // Send all Teams
+        // Do not need this as teams array is always up to date: refreshTeams()
+        for teamToSend in teams {
+            let teamDict : [String: AnyObject] = teamToSend.toDictionary()
+            print ("Sending: teamDict = \(teamDict)")
+            var jsonToSend : NSData = NSData()
+            do {
+                try jsonToSend = NSJSONSerialization.dataWithJSONObject(teamDict, options: NSJSONWritingOptions.PrettyPrinted)
+            } catch {
+                print("json error: \(error)")
+            }
+            tellEveryoneService.sendData(jsonToSend)
+            print ("Sent data")
+        }
+        
+    }
+    
     @IBAction func addNewTeamOrScoutAction(sender: UIBarButtonItem) {
         switch (segmentedTeamOrScoutControl.selectedSegmentIndex) {
         case 0:

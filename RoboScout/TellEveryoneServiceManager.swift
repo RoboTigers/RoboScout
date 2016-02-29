@@ -81,8 +81,7 @@ class TellEveryoneServiceManager: NSObject {
     }
     
     func sendData(data : NSData) {
-        print("sendData: \(data)")
-        
+        print("sending data to \(session.connectedPeers.count) peers")
         if session.connectedPeers.count > 0 {
             var error : NSError?
             do {
