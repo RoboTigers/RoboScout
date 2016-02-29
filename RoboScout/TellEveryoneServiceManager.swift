@@ -19,7 +19,7 @@ import MultipeerConnectivity
 protocol TellEveryoneServiceManagerDelegate {
     
     func connectedDevicesChanged(manager : TellEveryoneServiceManager, connectedDevices: [String])
-    func textChanged(manager : TellEveryoneServiceManager, textString: String)
+    //func textChanged(manager : TellEveryoneServiceManager, textString: String)
     func dataChanged(manager : TellEveryoneServiceManager, data: NSData)
     
 }

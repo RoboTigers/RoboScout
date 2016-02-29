@@ -11,6 +11,10 @@ import CoreData
 
 class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
+    // Tip: Can test that the service is advertised on the loxcal network either using the dns-sd terminal command:
+    // dns-sd -B _services._dns-sd._udp
+    let tellEveryoneService = TellEveryoneServiceManager()
+    
     // MARK: - Model
     var teams = [Team]()
     var scouts = [Scout]()
@@ -121,6 +125,9 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     override func viewDidLoad() {
         print("VIEW DID LOAD")
         super.viewDidLoad()
+        
+        // Set this view controller as the delegate for the sync (tell-everyone) service
+        tellEveryoneService.delegate = self
         
         // This will remove extra separators from tableview
         teamOrScoutTableView.tableFooterView = UIView(frame: CGRectZero)
@@ -379,9 +386,54 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         let currentYear = components.year
         return currentYear
     }
-
-
     
+    // MARK: - Sync functionality
     
+//    func reflectReceivedMessage (text: String) {
+//        //msgLabel.text = text
+//    }
+    
+    func updateTitle (text: String) {
+        self.title = text
+        self.viewDidAppear(true)
+    }
 
 }
+
+
+extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDelegate {
+    
+    func connectedDevicesChanged(manager: TellEveryoneServiceManager, connectedDevices: [String]) {
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            //self.connectionsLabel.text = "Connections: \(connectedDevices)"
+            self.updateTitle("Found \(connectedDevices)")
+        }
+    }
+    
+//    func textChanged(manager: TellEveryoneServiceManager, textString: String) {
+//        print("In TEVC, textChanged and the text is \(textString)")
+//        NSOperationQueue.mainQueue().addOperationWithBlock {
+//            self.reflectReceivedMessage(textString)
+//        }
+//    }
+    
+    func dataChanged(manager: TellEveryoneServiceManager, data: NSData) {
+        print("In TEVC, dataChanged")
+        
+        // TODO: For now we will just send team data, need to expand to include scout and report data
+        // Get data store context
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        let entity = NSEntityDescription.entityForName("Team", inManagedObjectContext: context)
+        let receivedTeam = Team(entity: entity!, insertIntoManagedObjectContext: context)
+        // Get received team from json data
+        receivedTeam.loadFromJson(data)
+        print ("receivedTeam = \(receivedTeam)")
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            //self.reflectReceivedMessage(receivedTeam.teamName!)
+            self.updateTitle("Received Sync Data")
+        }
+    }
+}
+

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		804616091C84665700436FC8 /* TellEveryoneServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */; };
+		8046160B1C846D8D00436FC8 /* SyncUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046160A1C846D8D00436FC8 /* SyncUtils.swift */; };
 		8098569A1C5C6126004C5EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809856991C5C6126004C5EEA /* AppDelegate.swift */; };
 		8098569F1C5C6126004C5EEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8098569D1C5C6126004C5EEA /* Main.storyboard */; };
 		809856A21C5C6126004C5EEA /* RoboScout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 809856A01C5C6126004C5EEA /* RoboScout.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TellEveryoneServiceManager.swift; sourceTree = "<group>"; };
+		8046160A1C846D8D00436FC8 /* SyncUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncUtils.swift; sourceTree = "<group>"; };
 		809856961C5C6126004C5EEA /* RoboScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoboScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		809856991C5C6126004C5EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8098569E1C5C6126004C5EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,7 +85,6 @@
 				809856A31C5C6126004C5EEA /* Assets.xcassets */,
 				809856A81C5C6126004C5EEA /* Info.plist */,
 				8098569D1C5C6126004C5EEA /* Main.storyboard */,
-				804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */,
 				80BEC8691C7733D400B78CEE /* Report.swift */,
 				849554661C7A374E00DA52FD /* Report+CoreDataProperties.swift */,
 				809856A01C5C6126004C5EEA /* RoboScout.xcdatamodeld */,
@@ -91,8 +92,10 @@
 				80BEC86A1C7733D400B78CEE /* Scout+CoreDataProperties.swift */,
 				80BEC8741C78F82200B78CEE /* SegmentedReportsTableViewController.swift */,
 				80E95AC41C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift */,
+				8046160A1C846D8D00436FC8 /* SyncUtils.swift */,
 				80BEC86D1C7733D400B78CEE /* Team.swift */,
 				80BEC86C1C7733D400B78CEE /* Team+CoreDataProperties.swift */,
+				804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */,
 			);
 			path = RoboScout;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				80EC51D81C64C3040000C00D /* AddNewTeamViewController.swift in Sources */,
 				80BEC8731C7733D400B78CEE /* Team.swift in Sources */,
 				809856A21C5C6126004C5EEA /* RoboScout.xcdatamodeld in Sources */,
+				8046160B1C846D8D00436FC8 /* SyncUtils.swift in Sources */,
 				80EC51DA1C64C3280000C00D /* AddNewScoutViewController.swift in Sources */,
 				804616091C84665700436FC8 /* TellEveryoneServiceManager.swift in Sources */,
 				849554671C7A374E00DA52FD /* Report+CoreDataProperties.swift in Sources */,
