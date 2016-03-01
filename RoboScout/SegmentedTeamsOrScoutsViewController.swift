@@ -65,18 +65,15 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     }
     
     @IBAction func unwindFromTeamAdd(unwindSegue: UIStoryboardSegue) {
-        print("get team controller which just was unwinded")
+        
         let addNewTeamViewController = unwindSegue.sourceViewController as? AddNewTeamViewController
         
-        // teamNumber and teamName and location are required
-        if ((addNewTeamViewController?.teamNumber.text?.isEmpty) != nil) ||
-            ((addNewTeamViewController?.teamName.text?.isEmpty) != nil) ||
-            ((addNewTeamViewController?.location.text?.isEmpty) != nil) {
-                displayMissingFieldOk()
+        if ( ((addNewTeamViewController?.teamNumber.text)!.isEmpty)  ||
+             ((addNewTeamViewController?.teamName.text)!.isEmpty) ||
+             ((addNewTeamViewController?.location.text)!.isEmpty) ) {
+                displayErrorAlertWithOk("All Team fields are required")
                 return
         }
-        
-        // teamNumber must not already exist
         
         print(addNewTeamViewController!.teamNumber.text)
        
@@ -88,6 +85,25 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         // Get current year
         let currentYear = getCurrentYear()
         
+        
+        // teamNumber must not already exist
+        let request = NSFetchRequest(entityName: "Team")
+        request.returnsObjectsAsFaults = false;
+        request.predicate = NSPredicate(format: "teamNumber = %@", addNewTeamViewController!.teamNumber.text!)
+        var results:NSArray = NSArray()
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch _ {
+            print("Error fetching team with number \(addNewTeamViewController!.teamNumber.text!)")
+        }
+        
+        if results.count > 0 {
+            displayErrorAlertWithOk("Team \(addNewTeamViewController!.teamNumber.text!) already exists")
+            return
+        }
+        
+        
+        // Team does not already exist so add new team object to data store
         // Grab values from text boxes
         let entity = NSEntityDescription.entityForName("Team", inManagedObjectContext: context)
         let newTeam = Team(entity: entity!, insertIntoManagedObjectContext: context)
@@ -117,9 +133,9 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         let addNewScoutViewController = unwindSegue.sourceViewController as? AddNewScoutViewController
         
         // scoutname and fullname are required
-        if ((addNewScoutViewController?.scoutName.text?.isEmpty) != nil) ||
-            ((addNewScoutViewController?.fullName.text?.isEmpty) != nil) {
-                displayMissingFieldOk()
+        if ( ((addNewScoutViewController?.scoutName.text)!.isEmpty)  ||
+            ((addNewScoutViewController?.fullName.text)!.isEmpty) ) {
+                displayErrorAlertWithOk("All Scout fields are required")
                 return
         }
         
@@ -130,6 +146,26 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         
         // Get current year
         let currentYear = getCurrentYear()
+        
+        
+        // scoutName must not already exist
+        let request = NSFetchRequest(entityName: "Scout")
+        request.returnsObjectsAsFaults = false;
+        request.predicate = NSPredicate(format: "scoutName = %@", addNewScoutViewController!.scoutName.text!)
+        var results:NSArray = NSArray()
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch _ {
+            print("Error fetching scout with name \(addNewScoutViewController!.scoutName.text!)")
+        }
+        
+        if results.count > 0 {
+            displayErrorAlertWithOk("Scout \(addNewScoutViewController!.scoutName.text!) already exists")
+            return
+        }
+        
+        
+        // Scout does not already exist so add new scout object to data store
         
         // Grab values from text boxes
         let entity = NSEntityDescription.entityForName("Scout", inManagedObjectContext: context)
@@ -150,11 +186,11 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         
     }
     
-    func displayMissingFieldOk() {
-        let refreshAlert = UIAlertController(title: "Missing Field", message: "All fields are required.", preferredStyle: UIAlertControllerStyle.Alert)
+    func displayErrorAlertWithOk(msg: String) {
+        let refreshAlert = UIAlertController(title: "Error", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            print("Missing data so return from unwind")
+            print("Data entry error so return from unwind")
             return
         }))
         
