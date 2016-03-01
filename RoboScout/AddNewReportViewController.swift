@@ -45,7 +45,9 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
 
         self.picker.delegate = self
         self.picker.dataSource = self
-        //sliderLabel.text = "2.5"
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+        
         refreshScouts()
         populateScoutNames()
     }
@@ -53,6 +55,11 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyboard() {
+        matchNumber.resignFirstResponder()
+        comments.resignFirstResponder()
     }
     
     // The number of columns of data
