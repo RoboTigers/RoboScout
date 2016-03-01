@@ -505,11 +505,33 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
     func dataChanged(manager: TellEveryoneServiceManager, data: NSData) {
         print("In SegmentedTeamsOrScoutsViewController, dataChanged")
         
-        // TODO: For now we will just send team data, need to expand to include scout and report data
+        // TODO: For now we will just send/receive team data, need to expand to include scout and report data
         
         // Get data store context
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        // First check that received team is not already in the data store
+        if let dict: AnyObject = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary {
+            let teamNumber:String = dict["teamNumber"] as! String
+            let request = NSFetchRequest(entityName: "Team")
+            request.returnsObjectsAsFaults = false;
+            request.predicate = NSPredicate(format: "teamNumber = %@", teamNumber)
+            
+            var results:NSArray = NSArray()
+            do {
+                results = try context.executeFetchRequest(request)
+            } catch _ {
+                print("Error fetching team with number \(teamNumber)")
+            }
+            
+            if results.count > 0 {
+                // Ignore duplicate received team
+                return
+            }
+        }
+        
+        // Create new Team in data store
         let entity = NSEntityDescription.entityForName("Team", inManagedObjectContext: context)
         let receivedTeam = Team(entity: entity!, insertIntoManagedObjectContext: context)
         
