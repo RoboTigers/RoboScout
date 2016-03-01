@@ -67,6 +67,30 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     @IBAction func unwindFromTeamAdd(unwindSegue: UIStoryboardSegue) {
         print("get team controller which just was unwinded")
         let addNewTeamViewController = unwindSegue.sourceViewController as? AddNewTeamViewController
+        
+        // teamNumber and teamName and location are required
+        if ((addNewTeamViewController?.teamNumber.text?.isEmpty) != nil) ||
+            ((addNewTeamViewController?.teamName.text?.isEmpty) != nil) ||
+            ((addNewTeamViewController?.location.text?.isEmpty) != nil)     {
+            
+                print("  !!!!!!!  required field(s) missing")
+                
+                let refreshAlert = UIAlertController(title: "Missing Field", message: "All fields are required.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                    print("Missing data so return from unwind")
+                    return
+                }))
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.presentViewController(refreshAlert, animated: true, completion: nil)
+                })
+                
+                return
+        }
+        
+        // teamNumber must not already exist
+        
         print(addNewTeamViewController!.teamNumber.text)
        
         
@@ -104,7 +128,26 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     @IBAction func unwindFromScoutAdd(unwindSegue: UIStoryboardSegue) {
         print("get scout controller which just was unwinded")
         let addNewScoutViewController = unwindSegue.sourceViewController as? AddNewScoutViewController
-        print(addNewScoutViewController!.scoutName.text)
+        
+        // scoutname and fullname are required
+        if ((addNewScoutViewController?.scoutName.text?.isEmpty) != nil) ||
+            ((addNewScoutViewController?.fullName.text?.isEmpty) != nil)     {
+                
+                print("  !!!!!!!  required field(s) missing")
+                
+                let refreshAlert = UIAlertController(title: "Missing Field", message: "All fields are required.", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                    print("Missing data so return from unwind")
+                    return
+                }))
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.presentViewController(refreshAlert, animated: true, completion: nil)
+                })
+                
+                return
+        }
         
         
         // Get data store context
@@ -353,7 +396,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             for team in results {
                 let t = team as! Team
                 teams.append(t)
-                print("Team found: \(t)")
+                //print("Team found: \(t)")
             }
             teamOrScoutTableView.reloadData()
         } else {
@@ -389,7 +432,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             for scout in results {
                 let s = scout as! Scout
                 scouts.append(s)
-                print("Scout found: \(s)")
+                //print("Scout found: \(s)")
             }
             teamOrScoutTableView.reloadData()
         } else {
