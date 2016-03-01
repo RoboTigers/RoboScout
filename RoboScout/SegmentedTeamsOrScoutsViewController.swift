@@ -208,7 +208,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         let refreshAlert = UIAlertController(title: "Error", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
-            print("Data entry error so return from unwind")
+            print("Data entry error")
             return
         }))
         
@@ -312,7 +312,23 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             
             switch (segmentedTeamOrScoutControl.selectedSegmentIndex) {
             case 0:
-                let teamToDelete = teams.removeAtIndex(indexPath.row)
+                // Team delete
+                
+                // Get team to be deleted from the array
+                let teamToDelete = teams[indexPath.row]
+                
+                // Do not remove a team if it has associated reports. User will have to delete the reports. This is for prevention of data loss.
+                // TOOD: We could have an alert saying "All associated reports will be deleted. Is this okay?" with an OK action but for now just disallow it.
+                if (teamToDelete.reports?.count > 0) {
+                    displayErrorAlertWithOk("Cannot delete Team which has Reports")
+                    refreshTeams()
+                    return
+                }
+                
+                // Delete from this view controllers model
+                teams.removeAtIndex(indexPath.row)
+                
+                // Delete from data store
                 let request = NSFetchRequest(entityName: "Team")
                 // Create compund predicate so we can find the object in the graph to delete
                 // We need condition of teamNumber == (teamNumber of selected team) && year == (year of selected team)
@@ -340,7 +356,22 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
                     print("Unable to save context when deleting team: " + teamToDelete.teamNumber!)
                 }
             case 1:
-                let scoutToDelete = scouts.removeAtIndex(indexPath.row)
+                // Scout delete
+                
+                // Get scout to be deleted from the array
+                let scoutToDelete = scouts[indexPath.row]
+                
+                // Do not remove a scout if it has associated reports.
+                if (scoutToDelete.reports?.count > 0) {
+                    displayErrorAlertWithOk("Cannot delete Scout which has Reports")
+                    refreshScouts()
+                    return
+                }
+                
+                // Delete from this view controllers model
+                scouts.removeAtIndex(indexPath.row)
+                
+                // Delete from data store
                 let request = NSFetchRequest(entityName: "Scout")
                 // Create compund predicate so we can find the object in the graph to delete
                 // We need condition of scoutName == (scoutName of selected scout) && year == (year of selected scout)
