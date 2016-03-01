@@ -89,7 +89,25 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         // teamNumber must not already exist
         let request = NSFetchRequest(entityName: "Team")
         request.returnsObjectsAsFaults = false;
-        request.predicate = NSPredicate(format: "teamNumber = %@", addNewTeamViewController!.teamNumber.text!)
+        
+        let keyValues: [String: AnyObject] = ["teamNumber" : addNewTeamViewController!.teamNumber.text!, "year" : currentYear]
+        var predicates = [NSPredicate]()
+        for (key, value) in keyValues {
+            print("Adding key (\(key)) and value (\(value)) to predicate")
+            let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
+            predicates.append(predicate)
+        }
+        let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
+        request.predicate = compoundPredicate
+        
+        
+//        request.predicate = NSPredicate(format: "teamNumber = %@", addNewTeamViewController!.teamNumber.text!)
+        
+        
+        
+        
+        
+        
         var results:NSArray = NSArray()
         do {
             results = try context.executeFetchRequest(request)
@@ -516,7 +534,21 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
             let teamNumber:String = dict["teamNumber"] as! String
             let request = NSFetchRequest(entityName: "Team")
             request.returnsObjectsAsFaults = false;
-            request.predicate = NSPredicate(format: "teamNumber = %@", teamNumber)
+            
+            // Get current year (sync only supported for "current" year
+            let currentYear = getCurrentYear()
+            
+            let keyValues: [String: AnyObject] = ["teamNumber" : teamNumber, "year" : currentYear]
+            var predicates = [NSPredicate]()
+            for (key, value) in keyValues {
+                print("Adding key (\(key)) and value (\(value)) to predicate")
+                let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
+                predicates.append(predicate)
+            }
+            let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
+            request.predicate = compoundPredicate
+            
+            //request.predicate = NSPredicate(format: "teamNumber = %@", teamNumber)
             
             var results:NSArray = NSArray()
             do {
