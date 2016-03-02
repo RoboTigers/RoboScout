@@ -183,9 +183,11 @@ class SegmentedReportsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
 
-        cell.textLabel?.text = reportsForSelectedTeam[indexPath.row].type!
-        cell.detailTextLabel?.text = (reportsForSelectedTeam[indexPath.row].scout?.scoutName)! + " (" + reportsForSelectedTeam[indexPath.row].event! + ")"
-
+        let overallRating = reportsForSelectedTeam[indexPath.row].overallRating!.stringValue
+        cell.textLabel?.text = (reportsForSelectedTeam[indexPath.row].scout?.scoutName)! + " (" + overallRating + ")"
+        cell.detailTextLabel?.text = (reportsForSelectedTeam[indexPath.row].type)! + " (" + reportsForSelectedTeam[indexPath.row].event!
+            + " - Match # " + (reportsForSelectedTeam[indexPath.row].matchNumber)!  + ")"
+        
         return cell
     }
 
