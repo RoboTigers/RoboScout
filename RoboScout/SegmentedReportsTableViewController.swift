@@ -28,6 +28,13 @@ class SegmentedReportsTableViewController: UITableViewController {
         let addNewReportViewController = unwindSegue.sourceViewController as? AddNewReportViewController
         print(addNewReportViewController!.selectedScout.scoutName)
         
+        // Confirm required fields are entered. We really only have to check for match number
+        // since the other required fields have default values.
+        if ((addNewReportViewController?.matchNumber.text)!.isEmpty) {
+                displayErrorAlertWithOk("Match Number is required")
+                return
+        }
+        
         
         // Get data store context
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -140,6 +147,19 @@ class SegmentedReportsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func displayErrorAlertWithOk(msg: String) {
+        let refreshAlert = UIAlertController(title: "Error", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            print("Data entry error")
+            return
+        }))
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(refreshAlert, animated: true, completion: nil)
+        })
     }
 
     // MARK: - Table view data source
