@@ -30,7 +30,6 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var lowBar: UISegmentedControl!
     @IBOutlet weak var comments: UITextView!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
-        // TODO: Add popup error if required data is missing (e.g., Match #)
     }
     @IBAction func sliderValueChanged(sender: UISlider) {
         sliderLabel.text = NSString(format: "%1.1f", sender.value) as String
@@ -81,9 +80,7 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
-        print ("Row \(row) was selected")
         selectedScout = scouts[row]
-        print ("Set selected scout to \(selectedScout.scoutName)")
     }
     
 
@@ -125,7 +122,6 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
             for scout in results {
                 let s = scout as! Scout
                 scouts.append(s)
-                print("Scout found: \(s)")
                 if (scouts.count == 1 && selectedScout == nil) {
                     // Set selectedScout to the first scout found since that
                     // will be the default in the picker if user does not spin

@@ -57,7 +57,7 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.event = eventStr
         
         var typeStr : String
-        switch (addNewReportViewController!.eventSegment.selectedSegmentIndex) {
+        switch (addNewReportViewController!.typeSegment.selectedSegmentIndex) {
         case 0: typeStr = "Pit"
         case 1: typeStr = "Stand"
         default: typeStr = "Unknown"
@@ -295,7 +295,6 @@ class SegmentedReportsTableViewController: UITableViewController {
             for report in results {
                 let r = report as! Report
                 reportsForSelectedTeam.append(r)
-                print("Report found: \(r)")
             }
             tableView.reloadData()
         } else {

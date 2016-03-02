@@ -483,7 +483,6 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             for scout in results {
                 let s = scout as! Scout
                 scouts.append(s)
-                //print("Scout found: \(s)")
             }
             teamOrScoutTableView.reloadData()
         } else {
