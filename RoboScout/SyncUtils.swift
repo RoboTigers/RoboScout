@@ -25,18 +25,15 @@ extension Team {
         return dict
     }
     
-    func loadFromJson(jsonData : NSData) {
-
-            if let dict: AnyObject = try! NSJSONSerialization.JSONObjectWithData(jsonData, options: []) as? NSDictionary {
-                print ("Team Dictionary received")
-                print ("dict = \(dict)")
-                self.teamName = dict["teamName"] as? String
-                self.teamNumber = dict["teamNumber"] as? String
-                self.location = dict["location"] as? String
-                self.year = dict["year"] as? String
-                print ("unpacked teamName = \(teamName)")
-            }
-        }
+    func loadFromJson(teamDict : NSDictionary) {
+        print ("Team Dictionary received")
+        print ("teamDict = \(teamDict)")
+        self.teamName = teamDict["teamName"] as? String
+        self.teamNumber = teamDict["teamNumber"] as? String
+        self.location = teamDict["location"] as? String
+        self.year = teamDict["year"] as? String
+        print ("unpacked teamName = \(teamName)")
+    }
     
 }
 

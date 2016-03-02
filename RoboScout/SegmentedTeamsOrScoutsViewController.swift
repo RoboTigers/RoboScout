@@ -26,21 +26,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     
     // Push data from this device to all connected devices
     @IBAction func pushData(sender: AnyObject) {
-        // Send all Teams
-        // Do not need this as teams array is always up to date: refreshTeams()
-        for teamToSend in teams {
-            let teamDict : [String: AnyObject] = teamToSend.toDictionary()
-            print ("Sending: teamDict = \(teamDict)")
-            var jsonToSend : NSData = NSData()
-            do {
-                try jsonToSend = NSJSONSerialization.dataWithJSONObject(teamDict, options: NSJSONWritingOptions.PrettyPrinted)
-            } catch {
-                print("json error: \(error)")
-            }
-            tellEveryoneService.sendData(jsonToSend)
-            print ("Sent data")
-        }
-        
+        pushTeams()
     }
     
     @IBAction func addNewTeamOrScoutAction(sender: UIBarButtonItem) {
@@ -554,52 +540,67 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
     func dataChanged(manager: TellEveryoneServiceManager, data: NSData) {
         print("In SegmentedTeamsOrScoutsViewController, dataChanged")
         
-        // TODO: For now we will just send/receive team data, need to expand to include scout and report data
+        if let dictReceived: AnyObject = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary {
+            print ("Dictionary received")
+            print ("dictReceived = \(dictReceived)")
+            let disriminator:String = (dictReceived["entityDiscriminator"] as? String)!
+            let entityObject: NSDictionary = (dictReceived["entityObject"] as? NSDictionary)!
+            print("discriminator received:  \(disriminator)")
+            print("entity object received: \(entityObject)")
+            if (disriminator == "TEAM") {
+                print("Unpack json to get team data")
+                teamDataChanged(entityObject)
+            }
+            
+            
+            print ("Done processing received \(disriminator)")
+        }
         
+    }
+    
+    func teamDataChanged(dict: NSDictionary) {
+    
         // Get data store context
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         // First check that received team is not already in the data store
-        if let dict: AnyObject = try! NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary {
-            let teamNumber:String = dict["teamNumber"] as! String
-            let request = NSFetchRequest(entityName: "Team")
-            request.returnsObjectsAsFaults = false;
+        let teamNumber:String = dict["teamNumber"] as! String
+        let request = NSFetchRequest(entityName: "Team")
+        request.returnsObjectsAsFaults = false;
             
-            // Get current year (sync only supported for "current" year
-            let currentYear = getCurrentYear()
+        // Get current year (sync only supported for "current" year
+        let currentYear = getCurrentYear()
             
-            let keyValues: [String: AnyObject] = ["teamNumber" : teamNumber, "year" : currentYear]
-            var predicates = [NSPredicate]()
-            for (key, value) in keyValues {
-                print("Adding key (\(key)) and value (\(value)) to predicate")
-                let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
-                predicates.append(predicate)
-            }
-            let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
-            request.predicate = compoundPredicate
-            
-            //request.predicate = NSPredicate(format: "teamNumber = %@", teamNumber)
-            
-            var results:NSArray = NSArray()
-            do {
-                results = try context.executeFetchRequest(request)
-            } catch _ {
-                print("Error fetching team with number \(teamNumber)")
-            }
-            
-            if results.count > 0 {
-                // Ignore duplicate received team
-                return
-            }
+        let keyValues: [String: AnyObject] = ["teamNumber" : teamNumber, "year" : currentYear]
+        var predicates = [NSPredicate]()
+        for (key, value) in keyValues {
+            print("Adding key (\(key)) and value (\(value)) to predicate")
+            let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
+            predicates.append(predicate)
         }
+        let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
+        request.predicate = compoundPredicate
+            
+        var results:NSArray = NSArray()
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch _ {
+            print("Error fetching team with number \(teamNumber)")
+        }
+            
+        if results.count > 0 {
+            // Ignore duplicate received team
+            return
+        }
+        
         
         // Create new Team in data store
         let entity = NSEntityDescription.entityForName("Team", inManagedObjectContext: context)
         let receivedTeam = Team(entity: entity!, insertIntoManagedObjectContext: context)
         
         // Get received team from json data
-        receivedTeam.loadFromJson(data)
+        receivedTeam.loadFromJson(dict)
         print ("receivedTeam = \(receivedTeam)")
         
         // Persist to data store
@@ -615,6 +616,25 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
         NSOperationQueue.mainQueue().addOperationWithBlock {
             //self.reflectReceivedMessage(receivedTeam.teamName!)
             self.updateTitle("Received Sync Data")
+        }
+    }
+    
+    func pushTeams() {
+        // Send all Teams
+        for teamToSend in teams {
+            let teamDict : [String: AnyObject] = teamToSend.toDictionary()
+            var dictToSend = [String: AnyObject]()
+            dictToSend["entityDiscriminator"] = "TEAM"
+            dictToSend["entityObject"] = teamDict
+            print ("Sending: dictToSend = \(dictToSend)")
+            var jsonToSend : NSData = NSData()
+            do {
+                try jsonToSend = NSJSONSerialization.dataWithJSONObject(dictToSend, options: NSJSONWritingOptions.PrettyPrinted)
+            } catch {
+                print("json error: \(error)")
+            }
+            tellEveryoneService.sendData(jsonToSend)
+            print ("Sent team")
         }
     }
 }
