@@ -27,6 +27,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     // Push data from this device to all connected devices
     @IBAction func pushData(sender: AnyObject) {
         pushTeams()
+        pushScouts()
     }
     
     @IBAction func addNewTeamOrScoutAction(sender: UIBarButtonItem) {
@@ -85,14 +86,6 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         }
         let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
         request.predicate = compoundPredicate
-        
-        
-//        request.predicate = NSPredicate(format: "teamNumber = %@", addNewTeamViewController!.teamNumber.text!)
-        
-        
-        
-        
-        
         
         var results:NSArray = NSArray()
         do {
@@ -547,6 +540,21 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
             let entityObject: NSDictionary = (dictReceived["entityObject"] as? NSDictionary)!
             print("discriminator received:  \(disriminator)")
             print("entity object received: \(entityObject)")
+            
+            
+            switch (disriminator) {
+            case "TEAM":
+                print("Unpack json to get team data")
+                teamDataChanged(entityObject)
+            case "SCOUT":
+                print("Unpack json to get scout data")
+                scoutDataChanged(entityObject)
+            default:
+                print("ERROR: Unknown discriminator")
+            }
+            
+            
+            
             if (disriminator == "TEAM") {
                 print("Unpack json to get team data")
                 teamDataChanged(entityObject)
@@ -619,6 +627,67 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
         }
     }
     
+    func scoutDataChanged(dict: NSDictionary) {
+        
+        // Get data store context
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        // First check that received scout is not already in the data store
+        let scoutName:String = dict["scoutName"] as! String
+        let request = NSFetchRequest(entityName: "Scout")
+        request.returnsObjectsAsFaults = false;
+        
+        // Get current year (sync only supported for "current" year
+        let currentYear = getCurrentYear()
+        
+        let keyValues: [String: AnyObject] = ["scoutName" : scoutName, "year" : currentYear]
+        var predicates = [NSPredicate]()
+        for (key, value) in keyValues {
+            print("Adding key (\(key)) and value (\(value)) to predicate")
+            let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
+            predicates.append(predicate)
+        }
+        let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
+        request.predicate = compoundPredicate
+        
+        var results:NSArray = NSArray()
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch _ {
+            print("Error fetching scout with unique name \(scoutName)")
+        }
+        
+        if results.count > 0 {
+            // Ignore duplicate received team
+            return
+        }
+        
+        
+        // Create new Scout in data store
+        let entity = NSEntityDescription.entityForName("Scout", inManagedObjectContext: context)
+        let receivedScout = Team(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        // Get received scout from json data
+        receivedScout.loadFromJson(dict)
+        print ("receivedScout = \(receivedScout)")
+        
+        // Persist to data store
+        do {
+            try context.save()
+        } catch _ {
+            // Handle core data error
+            print("Error saving new scout")
+        }
+        print("receivedScout: \(receivedScout)")
+        print("Object saved successfully")
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            self.updateTitle("Received Sync Data")
+        }
+    }
+    
+    
     func pushTeams() {
         // Send all Teams
         for teamToSend in teams {
@@ -637,5 +706,25 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
             print ("Sent team")
         }
     }
+    
+    func pushScouts() {
+        // Send all Scouts
+        for scoutToSend in scouts {
+            let scoutDict : [String: AnyObject] = scoutToSend.toDictionary()
+            var dictToSend = [String: AnyObject]()
+            dictToSend["entityDiscriminator"] = "SCOUT"
+            dictToSend["entityObject"] = scoutDict
+            print ("Sending: dictToSend = \(dictToSend)")
+            var jsonToSend : NSData = NSData()
+            do {
+                try jsonToSend = NSJSONSerialization.dataWithJSONObject(dictToSend, options: NSJSONWritingOptions.PrettyPrinted)
+            } catch {
+                print("json error: \(error)")
+            }
+            tellEveryoneService.sendData(jsonToSend)
+            print ("Sent scout")
+        }
+    }
+    
 }
 

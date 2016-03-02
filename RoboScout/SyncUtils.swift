@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Extend Team for converting to/from JSON
+// MARK: - Extend data source entities for converting to/from JSON
 
 
 // The Team "reports" releationship will be set in the sync of the Reports entity
@@ -33,6 +33,30 @@ extension Team {
         self.location = teamDict["location"] as? String
         self.year = teamDict["year"] as? String
         print ("unpacked teamName = \(teamName)")
+    }
+    
+}
+
+// The Scout "reports" releationship will be set in the sync of the Reports entity
+// This sync utility will only handle attributes (not relationships) of Scout
+
+extension Scout {
+    
+    func toDictionary() -> [String: AnyObject] {
+        var dict = [String: AnyObject]()
+        dict["scoutName"] = self.scoutName
+        dict["fullName"] = self.fullName
+        dict["year"] = self.year
+        return dict
+    }
+    
+    func loadFromJson(scoutDict : NSDictionary) {
+        print ("Scout Dictionary received")
+        print ("scoutDict = \(scoutDict)")
+        self.scoutName = scoutDict["scoutName"] as? String
+        self.fullName = scoutDict["fullName"] as? String
+        self.year = scoutDict["year"] as? String
+        print ("unpacked scoutName = \(scoutName)")
     }
     
 }
