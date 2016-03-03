@@ -118,14 +118,8 @@ class SegmentedReportsTableViewController: UITableViewController {
         print("newReport: \(newReport)")
         print("Object saved successfully")
         
-        //print("Reload tableView")
-        //self.tableView.reloadData()
-        
-        print("Now reload data in tableview")
+        getReportsForSelectedTeam()
         self.tableView.reloadData()
-        print("Done reloading data in tableview")
-        
-        viewDidAppear(true)
         
     }
     
@@ -143,12 +137,6 @@ class SegmentedReportsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
         print ("reports view did load and team number = \(selectedTeam.teamNumber)")
-        
-        //navigationItem.backBarButtonItem?.enabled
-        //navigationItem.setHidesBackButton(false, animated: true)
-        //let backButton : UIBarButtonItem = UIBarButtonItem()
-        //backButton.enabled = true
-        //navigationItem.setLeftBarButtonItem(backButton, animated: true)
         
 
         // Uncomment the following line to preserve selection between presentations
