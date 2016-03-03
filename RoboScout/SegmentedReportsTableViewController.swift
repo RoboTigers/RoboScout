@@ -18,6 +18,9 @@ class SegmentedReportsTableViewController: UITableViewController {
     
     var selectedTeam : Team!
     var reportsForSelectedTeam = [Report]()
+    var nycRegReports = [Report]()
+    var liReports = [Report]()
+    var championshipReports = [Report]()
     
     @IBAction func addNewReportAction(sender: UIBarButtonItem) {
         print("Add new report")
@@ -118,16 +121,23 @@ class SegmentedReportsTableViewController: UITableViewController {
         //print("Reload tableView")
         //self.tableView.reloadData()
         
+        print("Now reload data in tableview")
+        self.tableView.reloadData()
+        print("Done reloading data in tableview")
+        
+        viewDidAppear(true)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         print("VIEW DID APPEAR")
-        getReportsForSelectedTeam()
+        //getReportsForSelectedTeam()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Reports for Team #\(selectedTeam.teamNumber!)"
+        getReportsForSelectedTeam()
         
         // This will remove extra separators from tableview
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -169,15 +179,20 @@ class SegmentedReportsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        print("Set number of section to 3")
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        var ret = 0
-        ret = reportsForSelectedTeam.count
-        return ret
+        var num = 0
+        switch(section) {
+            case 0: num = nycRegReports.count
+            case 1: num = liReports.count
+            case 2: num = championshipReports.count
+            default: print("ERROR: Should not reach section \(section)")
+        }
+        print("Set number of rows in section \(section) to \(num)")
+        return num
     }
 
     private struct Storyboard {
@@ -186,13 +201,28 @@ class SegmentedReportsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath)
+        let reportForCell: Report
+        switch(indexPath.section) {
+            case 0: reportForCell = nycRegReports[indexPath.row]
+            case 1: reportForCell = liReports[indexPath.row]
+            case 2: reportForCell = championshipReports[indexPath.row]
+            default: return cell
+        }
+        print("Report for cell \(indexPath) is \(reportForCell)")
 
-        let overallRating = reportsForSelectedTeam[indexPath.row].overallRating!.stringValue
-        cell.textLabel?.text = (reportsForSelectedTeam[indexPath.row].scout?.scoutName)! + " (" + overallRating + ")"
-        cell.detailTextLabel?.text = (reportsForSelectedTeam[indexPath.row].type)! + " (" + reportsForSelectedTeam[indexPath.row].event!
-            + " - Match # " + (reportsForSelectedTeam[indexPath.row].matchNumber)!  + ")"
-        
+        let overallRating = reportForCell.overallRating!.stringValue
+        cell.textLabel?.text = "Match # " + (reportsForSelectedTeam[indexPath.row].matchNumber)! + " (" + overallRating + ")"
+        cell.detailTextLabel?.text = (reportForCell.scout?.scoutName)!
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch(section) {
+        case 0: return "NYC Regionals"
+        case 1: return "Long Island"
+        case 2: return "Championship"
+        default: return "Unknown section: \(section)"
+        }
     }
 
 
@@ -276,6 +306,9 @@ class SegmentedReportsTableViewController: UITableViewController {
     private func getReportsForSelectedTeam() {
         
         reportsForSelectedTeam.removeAll()
+        nycRegReports.removeAll()
+        liReports.removeAll()
+        championshipReports.removeAll()
         
         // Get data store context
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -299,8 +332,15 @@ class SegmentedReportsTableViewController: UITableViewController {
             for report in results {
                 let r = report as! Report
                 reportsForSelectedTeam.append(r)
+                print("Append event array for \(r.event!)")
+                switch (r.event!) {
+                    case "NYC Regional": nycRegReports.append(r)
+                    case "Long Island": liReports.append(r)
+                    case "Championship": championshipReports.append(r)
+                    default: print("ERROR: Should never have a report with an unknown event: \(r.event)")
+                }
+                print("Match: \(r.matchNumber), nyc: \(nycRegReports.count), li: \(liReports.count), champ: \(championshipReports.count)")
             }
-            tableView.reloadData()
         } else {
             print("No reports found")
         }
