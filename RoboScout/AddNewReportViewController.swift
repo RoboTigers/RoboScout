@@ -16,7 +16,6 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var matchNumber: UITextField!
-    @IBOutlet weak var shooter: UISegmentedControl!
     @IBOutlet weak var autonomous: UISegmentedControl!
     @IBOutlet weak var portcullis: UISegmentedControl!
     @IBOutlet weak var cheval: UISegmentedControl!

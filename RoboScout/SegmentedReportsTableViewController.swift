@@ -72,14 +72,6 @@ class SegmentedReportsTableViewController: UITableViewController {
         
         newReport.matchNumber = addNewReportViewController?.matchNumber.text
         
-        var shooter : Int
-        switch (addNewReportViewController!.shooter.selectedSegmentIndex) {
-        case 0: shooter = 1
-        case 1: shooter = 0
-        default: shooter = 0
-        }
-        newReport.isShooterBot = shooter
-        
         var autonomous : Int
         switch (addNewReportViewController!.autonomous.selectedSegmentIndex) {
         case 0: autonomous = 1

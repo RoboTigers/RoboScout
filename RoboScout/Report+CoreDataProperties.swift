@@ -26,7 +26,6 @@ extension Report {
     @NSManaged var comments: String?
     @NSManaged var event: String?
     @NSManaged var hasAutonomous: NSNumber?
-    @NSManaged var isShooterBot: NSNumber?
     @NSManaged var type: String?
     @NSManaged var matchNumber: String?
     @NSManaged var overallRating: NSNumber?
