@@ -57,17 +57,15 @@ class SegmentedReportsTableViewController: UITableViewController {
         switch (addNewReportViewController!.eventSegment.selectedSegmentIndex) {
         case 0: eventStr = "NYC Regional"
         case 1: eventStr = "Long Island"
+        case 2: eventStr = "Championship"
         default: eventStr = "Unknown"
         }
         newReport.event = eventStr
         
-        var typeStr : String
-        switch (addNewReportViewController!.typeSegment.selectedSegmentIndex) {
-        case 0: typeStr = "Pit"
-        case 1: typeStr = "Stand"
-        default: typeStr = "Unknown"
-        }
-        newReport.type = typeStr
+        // For now we only support "Stand" reports (not "Pit")
+        // But we leave the "type" attribute on the Report data entity
+        // for future use in this app.
+        newReport.type = "Stand"
         
         newReport.matchNumber = addNewReportViewController?.matchNumber.text
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="leV-Wa-7Fa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="leV-Wa-7Fa">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -176,24 +176,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-rg-vtZ">
-                                <rect key="frame" x="339" y="79" width="193" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lzu-rg-vtZ">
+                                <rect key="frame" x="272" y="79" width="308" height="29"/>
                                 <segments>
                                     <segment title="NYC Regional"/>
                                     <segment title="Long Island"/>
+                                    <segment title="Championship"/>
                                 </segments>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3P4-kx-sC2">
-                                <rect key="frame" x="383" y="119" width="121" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="VYs-aW-45s"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Pit"/>
-                                    <segment title="Stand"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match # " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuT-7y-XNW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Match # " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuT-7y-XNW">
                                 <rect key="frame" x="339" y="169" width="66" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="bOP-hO-SCZ"/>
@@ -230,7 +221,7 @@
                                     <segment title="No"/>
                                 </segments>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggv-k8-Uqr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ggv-k8-Uqr">
                                 <rect key="frame" x="455" y="165" width="84" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -400,7 +391,6 @@
                             <constraint firstItem="4Zg-wS-Wny" firstAttribute="top" secondItem="MI1-uf-chp" secondAttribute="bottom" constant="23" id="2eU-pt-Ggm"/>
                             <constraint firstItem="M2o-Sd-wDW" firstAttribute="leading" secondItem="kgO-KA-8fG" secondAttribute="trailing" id="389-cA-XPb"/>
                             <constraint firstItem="JxB-xf-sGE" firstAttribute="leading" secondItem="1VV-Hh-lKh" secondAttribute="trailing" constant="64" id="3JL-aO-QNk"/>
-                            <constraint firstItem="3P4-kx-sC2" firstAttribute="top" secondItem="lzu-rg-vtZ" secondAttribute="bottom" constant="12" id="3NA-dV-M3z"/>
                             <constraint firstItem="4c1-X1-LaT" firstAttribute="bottom" secondItem="bqh-wx-OnI" secondAttribute="bottom" id="3ms-Dy-kmq"/>
                             <constraint firstItem="M2o-Sd-wDW" firstAttribute="top" secondItem="l10-9R-7La" secondAttribute="bottom" constant="23" id="442-UY-jXd"/>
                             <constraint firstItem="kgO-KA-8fG" firstAttribute="leading" secondItem="frR-ZB-3El" secondAttribute="trailing" constant="8" symbolic="YES" id="6sf-96-1Lv"/>
@@ -426,7 +416,6 @@
                             <constraint firstItem="aPL-2f-imw" firstAttribute="centerY" secondItem="l10-9R-7La" secondAttribute="centerY" id="LOg-4u-BRn"/>
                             <constraint firstItem="Ggv-k8-Uqr" firstAttribute="leading" secondItem="EuT-7y-XNW" secondAttribute="trailing" constant="50" id="LRL-LY-1ko"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ggv-k8-Uqr" secondAttribute="trailing" constant="41" id="Le2-iI-IqV"/>
-                            <constraint firstItem="EuT-7y-XNW" firstAttribute="top" secondItem="3P4-kx-sC2" secondAttribute="bottom" constant="22" id="Mc3-RF-WBc"/>
                             <constraint firstItem="frR-ZB-3El" firstAttribute="firstBaseline" secondItem="z4D-hU-r3m" secondAttribute="firstBaseline" id="McJ-06-27C"/>
                             <constraint firstItem="EuT-7y-XNW" firstAttribute="leading" secondItem="sqz-5Z-xZN" secondAttribute="trailing" constant="94" id="Mgb-bs-xQH"/>
                             <constraint firstItem="sqz-5Z-xZN" firstAttribute="leading" secondItem="bqh-wx-OnI" secondAttribute="leading" id="Nfy-Pw-sIf"/>
@@ -443,7 +432,6 @@
                             <constraint firstItem="MI1-uf-chp" firstAttribute="baseline" secondItem="kgO-KA-8fG" secondAttribute="firstBaseline" id="Vdc-s3-VG9"/>
                             <constraint firstItem="69P-t9-wee" firstAttribute="leading" secondItem="0Q4-2s-cjb" secondAttribute="leadingMargin" id="Vtm-gH-QKJ"/>
                             <constraint firstItem="4c1-X1-LaT" firstAttribute="leading" secondItem="kgO-KA-8fG" secondAttribute="leading" id="W56-Bu-blb"/>
-                            <constraint firstItem="Ggv-k8-Uqr" firstAttribute="top" secondItem="3P4-kx-sC2" secondAttribute="bottom" constant="18" id="W8e-Mv-Bwm"/>
                             <constraint firstItem="l10-9R-7La" firstAttribute="leading" secondItem="45r-lu-iUA" secondAttribute="trailing" constant="8" symbolic="YES" id="W8x-ir-GIe"/>
                             <constraint firstItem="1VV-Hh-lKh" firstAttribute="top" secondItem="sqz-5Z-xZN" secondAttribute="bottom" constant="31" id="X9T-3A-6iT"/>
                             <constraint firstItem="zkx-9d-l1X" firstAttribute="leading" secondItem="z4D-hU-r3m" secondAttribute="leading" id="XTb-ZF-vaa"/>
@@ -489,7 +477,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="gq9-PB-jcH" secondAttribute="trailing" constant="11" id="v90-Nx-Brz"/>
                             <constraint firstItem="X4d-2X-qr7" firstAttribute="top" secondItem="akg-ON-bMM" secondAttribute="bottom" constant="8" symbolic="YES" id="wKl-4e-Kg9"/>
                             <constraint firstItem="jds-00-Yov" firstAttribute="top" secondItem="M2o-Sd-wDW" secondAttribute="bottom" constant="28" id="wfh-pz-qTk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3P4-kx-sC2" secondAttribute="trailing" constant="76" id="wrA-NC-nqR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lzu-rg-vtZ" secondAttribute="trailing" constant="48" id="x7z-Bx-mQf"/>
                             <constraint firstItem="32Y-ZE-7I4" firstAttribute="leading" secondItem="4Zg-wS-Wny" secondAttribute="trailing" constant="8" symbolic="YES" id="yBc-c4-Dbv"/>
                             <constraint firstItem="4Zg-wS-Wny" firstAttribute="centerY" secondItem="zkx-9d-l1X" secondAttribute="centerY" id="yHb-Vi-qbs"/>
@@ -528,7 +515,6 @@
                         <outlet property="shooter" destination="1VV-Hh-lKh" id="t9Q-9b-1uo"/>
                         <outlet property="slider" destination="akg-ON-bMM" id="VoS-Ml-Eer"/>
                         <outlet property="sliderLabel" destination="djd-x6-46C" id="SLD-RU-nte"/>
-                        <outlet property="typeSegment" destination="3P4-kx-sC2" id="Fpr-EP-beJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqC-aT-3p7" userLabel="First Responder" sceneMemberID="firstResponder"/>
