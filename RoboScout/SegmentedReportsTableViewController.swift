@@ -129,6 +129,7 @@ class SegmentedReportsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Meant for implementing team number title.
         
         // This will remove extra separators from tableview
         tableView.tableFooterView = UIView(frame: CGRectZero)
