@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+
+// This class is named "Segmented" so that in the future we can add
+// a segment control for 'Details' and 'Summary' views of the scouting
+// reports for the selected team. But for now we only display details.
+
 class SegmentedReportsTableViewController: UITableViewController {
     
     var selectedTeam : Team!
