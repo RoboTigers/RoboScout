@@ -221,8 +221,17 @@ class SegmentedReportsTableViewController: UITableViewController {
             let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let context:NSManagedObjectContext = appDel.managedObjectContext
             
+            let reportToDelete: Report = { // start of a closure expression that returns a Report
 
-                let reportToDelete = reportsForSelectedTeam.removeAtIndex(indexPath.row)
+                switch(indexPath.section) {
+                case 0: return nycRegReports.removeAtIndex(indexPath.row)
+                case 1: return liReports.removeAtIndex(indexPath.row)
+                case 2: return championshipReports.removeAtIndex(indexPath.row)
+                default: return Report()
+                }
+                
+            }()
+            
                 let request = NSFetchRequest(entityName: "Report")
                 // Create compund predicate so we can find the object in the graph to delete
                 // We need conditions matching event, reportType, driverStation, team, scout 
@@ -252,6 +261,7 @@ class SegmentedReportsTableViewController: UITableViewController {
                     print("Unable to save context when deleting report: \(reportToDelete)")
                 }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            getReportsForSelectedTeam()
         } /* else if editingStyle == .Insert {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         } */
