@@ -80,21 +80,18 @@ class SegmentedReportsTableViewController: UITableViewController {
         }
         newReport.hasAutonomous = autonomous
         
-        // We do not need a switch statement on the defense segments since we luckily
-        // need values 0, 1, 2 which is the default values of the segment controller
-        // according to how we laied it out on the storyboard. A value of 0 means the robot
-        // never traversed thta defense (whether it didn't try or whether it couldn't). A value
-        // of 1 means it passed it once thereby weakening the defense. A value of 2 means
-        // it passed it twice thereby taking down that defense.
-        newReport.canPassPortcullis = addNewReportViewController!.portcullis.selectedSegmentIndex
-        newReport.canPassChevalDeFrise = addNewReportViewController!.cheval.selectedSegmentIndex
-        newReport.canPassMoat = addNewReportViewController!.moat.selectedSegmentIndex
-        newReport.canPassSallyPort = addNewReportViewController!.sallyPort.selectedSegmentIndex
-        newReport.canPassDrawbridge = addNewReportViewController!.drawbridge.selectedSegmentIndex
-        newReport.canPassRamparts = addNewReportViewController!.ramparts.selectedSegmentIndex
-        newReport.canPassRockWall = addNewReportViewController!.rockWall.selectedSegmentIndex
-        newReport.canPassRoughTerrain = addNewReportViewController!.roughTerrain.selectedSegmentIndex
-        newReport.canPassLowBar = addNewReportViewController!.lowBar.selectedSegmentIndex
+        // Speed values:
+        //  0 = Slow
+        //  1 = Medium
+        //  2 = Fast
+        newReport.speedPortcullis = addNewReportViewController!.portcullisSpeed.selectedSegmentIndex
+        newReport.speedChevalDeFrise = addNewReportViewController!.chevalSpeed.selectedSegmentIndex
+        newReport.speedMoat = addNewReportViewController!.moatSpeed.selectedSegmentIndex
+        newReport.speedSallyPort = addNewReportViewController!.sallyPortSpeed.selectedSegmentIndex
+        newReport.speedDrawbridge = addNewReportViewController!.drawbridgeSpeed.selectedSegmentIndex
+        newReport.speedRamparts = addNewReportViewController!.rampartsSpeed.selectedSegmentIndex
+        newReport.speedRockWall = addNewReportViewController!.rockWallSpeed.selectedSegmentIndex
+        newReport.speedLowBar = addNewReportViewController!.lowBarSpeed.selectedSegmentIndex
         
         newReport.overallRating = addNewReportViewController!.slider.value
 

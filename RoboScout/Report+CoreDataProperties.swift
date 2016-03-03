@@ -14,15 +14,15 @@ import CoreData
 
 extension Report {
 
-    @NSManaged var canPassSallyPort: NSNumber?
-    @NSManaged var canPassChevalDeFrise: NSNumber?
-    @NSManaged var canPassDrawbridge: NSNumber?
-    @NSManaged var canPassLowBar: NSNumber?
-    @NSManaged var canPassMoat: NSNumber?
-    @NSManaged var canPassPortcullis: NSNumber?
-    @NSManaged var canPassRamparts: NSNumber?
-    @NSManaged var canPassRockWall: NSNumber?
-    @NSManaged var canPassRoughTerrain: NSNumber?
+    @NSManaged var speedSallyPort: NSNumber?
+    @NSManaged var speedChevalDeFrise: NSNumber?
+    @NSManaged var speedDrawbridge: NSNumber?
+    @NSManaged var speedLowBar: NSNumber?
+    @NSManaged var speedMoat: NSNumber?
+    @NSManaged var speedPortcullis: NSNumber?
+    @NSManaged var speedRamparts: NSNumber?
+    @NSManaged var speedRockWall: NSNumber?
+    @NSManaged var speedRoughTerrain: NSNumber?
     @NSManaged var comments: String?
     @NSManaged var event: String?
     @NSManaged var hasAutonomous: NSNumber?

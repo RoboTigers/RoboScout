@@ -239,25 +239,25 @@
                                     <constraint firstAttribute="width" constant="107" id="zz3-0O-UW9"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-X1-LaT">
                                 <rect key="frame" x="298" y="279" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="l10-9R-7La">
                                 <rect key="frame" x="473" y="280" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cheval de Frise " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPL-2f-imw">
@@ -290,25 +290,25 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MI1-uf-chp">
                                 <rect key="frame" x="73" y="327" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kgO-KA-8fG">
                                 <rect key="frame" x="298" y="327" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ivs-Rk-bGZ">
                                 <rect key="frame" x="473" y="328" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rock Wall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkx-9d-l1X">
@@ -332,25 +332,25 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Zg-wS-Wny">
                                 <rect key="frame" x="73" y="378" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8mN-mR-Nm4">
                                 <rect key="frame" x="298" y="378" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Xm-WZ-fpH">
                                 <rect key="frame" x="473" y="379" width="107" height="29"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
+                                    <segment title="Slow"/>
+                                    <segment title="Med"/>
+                                    <segment title="Fast"/>
                                 </segments>
                             </segmentedControl>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqz-5Z-xZN">
@@ -468,19 +468,19 @@
                     </navigationItem>
                     <connections>
                         <outlet property="autonomous" destination="gq9-PB-jcH" id="wHv-TZ-WIW"/>
-                        <outlet property="cheval" destination="4c1-X1-LaT" id="a05-Wa-jar"/>
+                        <outlet property="chevalSpeed" destination="4c1-X1-LaT" id="ZqY-ad-fUw"/>
                         <outlet property="comments" destination="X4d-2X-qr7" id="add-0D-QzP"/>
-                        <outlet property="drawbridge" destination="kgO-KA-8fG" id="MTQ-cx-SDQ"/>
+                        <outlet property="drawbridgeSpeed" destination="Ivs-Rk-bGZ" id="gwA-yn-nju"/>
                         <outlet property="eventSegment" destination="lzu-rg-vtZ" id="W0e-bK-qOW"/>
-                        <outlet property="lowBar" destination="9Xm-WZ-fpH" id="ozW-xH-FMb"/>
+                        <outlet property="lowBarSpeed" destination="9Xm-WZ-fpH" id="Gkt-qI-DSA"/>
                         <outlet property="matchNumber" destination="Ggv-k8-Uqr" id="LS8-hv-bL5"/>
-                        <outlet property="moat" destination="l10-9R-7La" id="HvG-aO-SGs"/>
+                        <outlet property="moatSpeed" destination="l10-9R-7La" id="S9p-Hm-4Cy"/>
                         <outlet property="picker" destination="sqz-5Z-xZN" id="BCD-mt-aaJ"/>
-                        <outlet property="portcullis" destination="bqh-wx-OnI" id="6nJ-97-DpL"/>
-                        <outlet property="ramparts" destination="Ivs-Rk-bGZ" id="OcK-bI-Hp3"/>
-                        <outlet property="rockWall" destination="4Zg-wS-Wny" id="jXc-9w-CQF"/>
-                        <outlet property="roughTerrain" destination="8mN-mR-Nm4" id="X19-vV-50O"/>
-                        <outlet property="sallyPort" destination="MI1-uf-chp" id="76u-BM-jan"/>
+                        <outlet property="portcullisSpeed" destination="bqh-wx-OnI" id="wOI-9b-Gti"/>
+                        <outlet property="rampartsSpeed" destination="Ivs-Rk-bGZ" id="mIj-3j-vhx"/>
+                        <outlet property="rockWallSpeed" destination="4Zg-wS-Wny" id="T9M-ro-rit"/>
+                        <outlet property="roughTerrainSpeed" destination="8mN-mR-Nm4" id="BHl-cR-SuL"/>
+                        <outlet property="sallyPortSpeed" destination="MI1-uf-chp" id="FjN-oo-3Mz"/>
                         <outlet property="slider" destination="akg-ON-bMM" id="VoS-Ml-Eer"/>
                         <outlet property="sliderLabel" destination="djd-x6-46C" id="SLD-RU-nte"/>
                     </connections>
@@ -488,7 +488,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqC-aT-3p7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c8v-HH-p9y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3155" y="1068"/>
+            <point key="canvasLocation" x="3115" y="1068"/>
         </scene>
         <!--Add New Team View Controller-->
         <scene sceneID="E4z-Xf-HgP">

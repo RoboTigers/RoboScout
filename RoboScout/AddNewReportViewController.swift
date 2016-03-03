@@ -17,15 +17,15 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var sliderLabel: UILabel!
     @IBOutlet weak var matchNumber: UITextField!
     @IBOutlet weak var autonomous: UISegmentedControl!
-    @IBOutlet weak var portcullis: UISegmentedControl!
-    @IBOutlet weak var cheval: UISegmentedControl!
-    @IBOutlet weak var moat: UISegmentedControl!
-    @IBOutlet weak var sallyPort: UISegmentedControl!
-    @IBOutlet weak var drawbridge: UISegmentedControl!
-    @IBOutlet weak var ramparts: UISegmentedControl!
-    @IBOutlet weak var rockWall: UISegmentedControl!
-    @IBOutlet weak var roughTerrain: UISegmentedControl!
-    @IBOutlet weak var lowBar: UISegmentedControl!
+    @IBOutlet weak var portcullisSpeed: UISegmentedControl!
+    @IBOutlet weak var chevalSpeed: UISegmentedControl!
+    @IBOutlet weak var moatSpeed: UISegmentedControl!
+    @IBOutlet weak var sallyPortSpeed: UISegmentedControl!
+    @IBOutlet weak var drawbridgeSpeed: UISegmentedControl!
+    @IBOutlet weak var rampartsSpeed: UISegmentedControl!
+    @IBOutlet weak var rockWallSpeed: UISegmentedControl!
+    @IBOutlet weak var roughTerrainSpeed: UISegmentedControl!
+    @IBOutlet weak var lowBarSpeed: UISegmentedControl!
     @IBOutlet weak var comments: UITextView!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }
