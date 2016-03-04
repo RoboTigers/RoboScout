@@ -82,11 +82,23 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.facedPortcullis = addNewReportViewController!.portcullisFaced.on
         newReport.facedCheval = addNewReportViewController!.chevalFaced.on
         newReport.facedMoat = addNewReportViewController!.moatFaced.on
+        newReport.facedSallyPort = addNewReportViewController!.sallyPortFaced.on
+        newReport.facedDrawbridge = addNewReportViewController!.drawbridgeFaced.on
+        newReport.facedRamparts = addNewReportViewController!.rampartsFaced.on
+        newReport.facedRockWall = addNewReportViewController!.rockWallFaced.on
+        newReport.facedRoughTerrain = addNewReportViewController!.roughTerrainFaced.on
+        newReport.facedLowBar = addNewReportViewController!.lowBarFaced.on
         
         // Num Crosses
         newReport.numCrossesPortcullis = Int(addNewReportViewController!.portcullisNumCrossesLabel.text!)
         newReport.numCrossesCheval = Int(addNewReportViewController!.chevalNumCrossesLabel.text!)
         newReport.numCrossesMoat = Int(addNewReportViewController!.moatNumCrossesLabel.text!)
+        newReport.numCrossesSallyPort = Int(addNewReportViewController!.sallyPortNumCrossesLabel.text!)
+        newReport.numCrossesDrawbridge = Int(addNewReportViewController!.drawbridgeNumCrossesLabel.text!)
+        newReport.numCrossesRamparts = Int(addNewReportViewController!.rampartsNumCrossesLabel.text!)
+        newReport.numCrossesRockWall = Int(addNewReportViewController!.rockWallNumCrossesLabel.text!)
+        newReport.numCrossesRoughTerrain = Int(addNewReportViewController!.roughTerrainNumCrossesLabel.text!)
+        newReport.numCrossesLowBar = Int(addNewReportViewController!.lowBarNumCrossesLabel.text!)
         
         // Speed values:
         //  0 = Slow

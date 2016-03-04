@@ -14,7 +14,7 @@
         <attribute name="facedPortcullis" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="facedRamparts" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="facedRockWall" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="facedRoughTerrain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facedRoughTerrain" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="facedSallyPort" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="hasAutonomous" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="matchNumber" optional="YES" attributeType="String" syncable="YES"/>

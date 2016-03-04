@@ -40,7 +40,7 @@ extension Report {
     @NSManaged var facedDrawbridge: NSNumber?
     @NSManaged var facedRamparts: NSNumber?
     @NSManaged var facedRockWall: NSNumber?
-    @NSManaged var facedRoughTerrain: String?
+    @NSManaged var facedRoughTerrain: NSNumber?
     @NSManaged var facedLowBar: NSNumber?
     @NSManaged var numCrossesPortcullis: NSNumber?
     @NSManaged var numCrossesCheval: NSNumber?

@@ -35,12 +35,32 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var portcullisFaced: UISwitch!
     @IBOutlet weak var chevalFaced: UISwitch!
     @IBOutlet weak var moatFaced: UISwitch!
+    @IBOutlet weak var sallyPortFaced: UISwitch!
+    @IBOutlet weak var drawbridgeFaced: UISwitch!
+    @IBOutlet weak var rampartsFaced: UISwitch!
+    @IBOutlet weak var rockWallFaced: UISwitch!
+    @IBOutlet weak var roughTerrainFaced: UISwitch!
+    @IBOutlet weak var lowBarFaced: UISwitch!
+    
     @IBOutlet weak var portcullisNumCrossesLabel: UILabel!
     @IBOutlet weak var chevalNumCrossesLabel: UILabel!
     @IBOutlet weak var moatNumCrossesLabel: UILabel!
+    @IBOutlet weak var sallyPortNumCrossesLabel: UILabel!
+    @IBOutlet weak var drawbridgeNumCrossesLabel: UILabel!
+    @IBOutlet weak var rampartsNumCrossesLabel: UILabel!
+    @IBOutlet weak var rockWallNumCrossesLabel: UILabel!
+    @IBOutlet weak var roughTerrainNumCrossesLabel: UILabel!
+    @IBOutlet weak var lowBarNumCrossesLabel: UILabel!
+    
     @IBOutlet weak var portcullisStepper: UIStepper!
     @IBOutlet weak var chevalStepper: UIStepper!
     @IBOutlet weak var moatStepper: UIStepper!
+    @IBOutlet weak var sallyPortStepper: UIStepper!
+    @IBOutlet weak var drawbridgeStepper: UIStepper!
+    @IBOutlet weak var rampartsStepper: UIStepper!
+    @IBOutlet weak var rockWallStepper: UIStepper!
+    @IBOutlet weak var roughTerrainStepper: UIStepper!
+    @IBOutlet weak var lowBarStepper: UIStepper!
     
     
     @IBOutlet weak var comments: UITextView!
@@ -55,6 +75,30 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     @IBAction func moatStepperAction(sender: AnyObject) {
         moatNumCrossesLabel.text = "\(Int(moatStepper.value))"
+    }
+    
+    @IBAction func sallyPortStepperAction(sender: AnyObject) {
+        sallyPortNumCrossesLabel.text = "\(Int(sallyPortStepper.value))"
+    }
+    
+    @IBAction func drawbridgeStepperAction(sender: AnyObject) {
+        drawbridgeNumCrossesLabel.text = "\(Int(drawbridgeStepper.value))"
+    }
+    
+    @IBAction func rampartsStepperAction(sender: AnyObject) {
+        rampartsNumCrossesLabel.text = "\(Int(rampartsStepper.value))"
+    }
+    
+    @IBAction func rockWallStepperAction(sender: AnyObject) {
+        rockWallNumCrossesLabel.text = "\(Int(rockWallStepper.value))"
+    }
+
+    @IBAction func roughTerrainStepperAction(sender: AnyObject) {
+        roughTerrainNumCrossesLabel.text = "\(Int(roughTerrainStepper.value))"
+    }
+    
+    @IBAction func lowBarStepperAction(sender: AnyObject) {
+        lowBarNumCrossesLabel.text = "\(Int(lowBarStepper.value))"
     }
     
     @IBAction func doneAddingNewReport(sender: AnyObject) {
