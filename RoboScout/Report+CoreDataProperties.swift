@@ -2,7 +2,7 @@
 //  Report+CoreDataProperties.swift
 //  RoboScout
 //
-//  Created by Sharon Kass on 3/3/16.
+//  Created by Sharon Kass on 3/4/16.
 //  Copyright © 2016 RoboTigers. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -51,6 +51,14 @@ extension Report {
     @NSManaged var numCrossesRockWall: NSNumber?
     @NSManaged var numCrossesRoughTerrain: NSNumber?
     @NSManaged var numCrossesLowBar: NSNumber?
+    @NSManaged var numScoreSuccessLow: NSNumber?
+    @NSManaged var numScoreSuccessesHigh: NSNumber?
+    @NSManaged var numScoreAttemptsHigh: NSNumber?
+    @NSManaged var didChallange: NSNumber?
+    @NSManaged var didScale: NSNumber?
+    @NSManaged var didCapture: NSNumber?
+    @NSManaged var numFoulsTechnical: NSNumber?
+    @NSManaged var numFoulsRegular: NSNumber?
     @NSManaged var scout: Scout?
     @NSManaged var team: Team?
 

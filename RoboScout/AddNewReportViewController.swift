@@ -63,6 +63,15 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var lowBarStepper: UIStepper!
     
     
+    @IBOutlet weak var numLowScoresLabel: UILabel!
+    @IBOutlet weak var numHighAttempsLabel: UILabel!
+    @IBOutlet weak var numHighScoresLabel: UILabel!
+    
+    @IBOutlet weak var numLowScoresStepper: UIStepper!
+    @IBOutlet weak var numHighAttemptsStepper: UIStepper!
+    @IBOutlet weak var numHighScoresStepper: UIStepper!
+    
+    
     @IBOutlet weak var comments: UITextView!
     
     @IBAction func portcullisStepperAction(sender: AnyObject) {
@@ -100,6 +109,19 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBAction func lowBarStepperAction(sender: AnyObject) {
         lowBarNumCrossesLabel.text = "\(Int(lowBarStepper.value))"
     }
+    
+    @IBAction func lowScoresStepperAction(sender: AnyObject) {
+        numLowScoresLabel.text = "\(Int(numLowScoresStepper.value))"
+    }
+    
+    @IBAction func highAttemptsStepperAction(sender: AnyObject) {
+        numHighAttempsLabel.text = "\(Int(numHighAttemptsStepper.value))"
+    }
+    
+    @IBAction func highScoresStepperAction(sender: AnyObject) {
+        numHighScoresLabel.text = "\(Int(numHighScoresStepper.value))"
+    }
+    
     
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }

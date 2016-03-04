@@ -113,6 +113,11 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.speedRockWall = addNewReportViewController!.rockWallSpeed.selectedSegmentIndex
         newReport.speedLowBar = addNewReportViewController!.lowBarSpeed.selectedSegmentIndex
         
+        // Offense
+        newReport.numScoreSuccessLow = Int(addNewReportViewController!.numLowScoresLabel.text!)
+        newReport.numScoreAttemptsHigh = Int(addNewReportViewController!.numHighAttempsLabel.text!)
+        newReport.numScoreSuccessesHigh = Int(addNewReportViewController!.numHighScoresLabel.text!)
+        
         newReport.overallRating = addNewReportViewController!.slider.value
 
         newReport.comments = addNewReportViewController!.comments.text
