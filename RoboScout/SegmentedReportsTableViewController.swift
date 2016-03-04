@@ -118,6 +118,10 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.numScoreAttemptsHigh = Int(addNewReportViewController!.numHighAttempsLabel.text!)
         newReport.numScoreSuccessesHigh = Int(addNewReportViewController!.numHighScoresLabel.text!)
         
+        newReport.didChallange = addNewReportViewController!.didChallange.on
+        newReport.didScale = addNewReportViewController!.didScale.on
+        newReport.didCapture = addNewReportViewController!.didCapture.on
+        
         newReport.overallRating = addNewReportViewController!.slider.value
 
         newReport.comments = addNewReportViewController!.comments.text
@@ -210,7 +214,6 @@ class SegmentedReportsTableViewController: UITableViewController {
             case 2: reportForCell = championshipReports[indexPath.row]
             default: return cell
         }
-        print("Report for cell \(indexPath) is \(reportForCell)")
 
         let overallRating = reportForCell.overallRating!.stringValue
         cell.textLabel?.text = "Match # " + (reportsForSelectedTeam[indexPath.row].matchNumber)! + " (" + overallRating + ")"

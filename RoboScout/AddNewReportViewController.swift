@@ -62,6 +62,9 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var roughTerrainStepper: UIStepper!
     @IBOutlet weak var lowBarStepper: UIStepper!
     
+    @IBOutlet weak var didChallange: UISwitch!
+    @IBOutlet weak var didScale: UISwitch!
+    @IBOutlet weak var didCapture: UISwitch!
     
     @IBOutlet weak var numLowScoresLabel: UILabel!
     @IBOutlet weak var numHighAttempsLabel: UILabel!
