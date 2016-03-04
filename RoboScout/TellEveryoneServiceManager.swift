@@ -82,7 +82,46 @@ class TellEveryoneServiceManager: NSObject {
     
     func sendData(data : NSData) {
         print("sending data to \(session.connectedPeers.count) peers")
+        
+        // REMOVE THIS
+        let myDevice : UIDevice = UIDevice.currentDevice();
+        let myDeviceName = myDevice.name
+        print("My device name is \(myDeviceName)")
+        let myDeviceDashIdx = myDeviceName.rangeOfString("-", options: .BackwardsSearch)?.startIndex
+        var myDeviceSubstringUpToDash = ""
+        if (myDeviceDashIdx != nil) {
+            myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
+        }
+        print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
+        // END REMOVE THIS
+        
         if session.connectedPeers.count > 0 {
+            // Get device name of current device and grab the substring up to the last dash
+            let myDevice : UIDevice = UIDevice.currentDevice();
+            let myDeviceName = myDevice.name
+            let myDeviceDashIdx = myDeviceName.rangeOfString("-", options: .BackwardsSearch)?.startIndex
+            var myDeviceSubstringUpToDash = ""
+            if (myDeviceDashIdx != nil) {
+                myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
+            }
+            print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
+            
+            // Loop through connected peers and if peer matches the device name pattern then send data
+            for peer : MCPeerID in session.connectedPeers {
+                let peerName = peer.displayName
+                let peerDashIdx = peerName.rangeOfString("-", options: .BackwardsSearch)?.startIndex
+                var peerSubstringUpToDash = ""
+                if (peerDashIdx != nil) {
+                    peerSubstringUpToDash = peerName.substringToIndex(peerDashIdx!)
+                }
+                // Compare the sending device with the connected peer. If names match up to the last dash 
+                // then allow the sync.
+                if (myDeviceSubstringUpToDash == peerSubstringUpToDash) {
+                    print("send to \(peer)")
+                    //TODO: Move the var+do up to here
+                }
+            }
+            
             var error : NSError?
             do {
                 try self.session.sendData(data, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable)
