@@ -21,7 +21,6 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var autoCrossedDefense: UISwitch!
     @IBOutlet weak var autoScoredLow: UISwitch!
     @IBOutlet weak var autoScoredHigh: UISwitch!
-    
     @IBOutlet weak var portcullisSpeed: UISegmentedControl!
     @IBOutlet weak var chevalSpeed: UISegmentedControl!
     @IBOutlet weak var moatSpeed: UISegmentedControl!
@@ -31,6 +30,19 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var rockWallSpeed: UISegmentedControl!
     @IBOutlet weak var roughTerrainSpeed: UISegmentedControl!
     @IBOutlet weak var lowBarSpeed: UISegmentedControl!
+    
+    
+    @IBOutlet weak var portcullisFaced: UISwitch!
+    @IBOutlet weak var chevalFaced: UISwitch!
+    @IBOutlet weak var moatFaced: UISwitch!
+    @IBOutlet weak var portcullisNumCrossesLabel: UILabel!
+    @IBOutlet weak var chevalNumCrossesLabel: UILabel!
+    @IBOutlet weak var moatNumCrossesLabel: UILabel!
+    @IBOutlet weak var portcullisStepper: UIStepper!
+    @IBOutlet weak var chevalStepper: UIStepper!
+    @IBOutlet weak var moatStepper: UIStepper!
+    
+    
     @IBOutlet weak var comments: UITextView!
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }
