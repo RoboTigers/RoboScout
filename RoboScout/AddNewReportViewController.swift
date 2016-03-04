@@ -74,6 +74,10 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var numHighAttemptsStepper: UIStepper!
     @IBOutlet weak var numHighScoresStepper: UIStepper!
     
+    @IBOutlet weak var techFoulsLabel: UILabel!
+    @IBOutlet weak var regularFoulsLabel: UILabel!
+    @IBOutlet weak var techFoulsStepper: UIStepper!
+    @IBOutlet weak var regularFoulsStepper: UIStepper!
     
     @IBOutlet weak var comments: UITextView!
     
@@ -125,6 +129,13 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
         numHighScoresLabel.text = "\(Int(numHighScoresStepper.value))"
     }
     
+    @IBAction func techFoulsStepperAction(sender: AnyObject) {
+        techFoulsLabel.text = "\(Int(techFoulsStepper.value))"
+    }
+    
+    @IBAction func regularFoulsStepperAction(sender: AnyObject) {
+        regularFoulsLabel.text = "\(Int(regularFoulsStepper.value))"
+    }
     
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }

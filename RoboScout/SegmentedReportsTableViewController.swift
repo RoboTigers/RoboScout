@@ -122,6 +122,11 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.didScale = addNewReportViewController!.didScale.on
         newReport.didCapture = addNewReportViewController!.didCapture.on
         
+        // Fouls
+        newReport.numFoulsTechnical = Int(addNewReportViewController!.techFoulsLabel.text!)
+        newReport.numFoulsRegular = Int(addNewReportViewController!.regularFoulsLabel.text!)
+        
+        
         newReport.overallRating = addNewReportViewController!.slider.value
 
         newReport.comments = addNewReportViewController!.comments.text
