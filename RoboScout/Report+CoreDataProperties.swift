@@ -14,6 +14,10 @@ import CoreData
 
 extension Report {
 
+    @NSManaged var autoCrossedDefense: NSNumber?
+    @NSManaged var autoReachedDefense: NSNumber?
+    @NSManaged var autoScoredHigh: NSNumber?
+    @NSManaged var autoScoredLow: NSNumber?
     @NSManaged var comments: String?
     @NSManaged var event: String?
     @NSManaged var hasAutonomous: NSNumber?
@@ -29,10 +33,24 @@ extension Report {
     @NSManaged var speedRoughTerrain: NSNumber?
     @NSManaged var speedSallyPort: NSNumber?
     @NSManaged var type: String?
-    @NSManaged var autoReachedDefense: NSNumber?
-    @NSManaged var autoCrossedDefense: NSNumber?
-    @NSManaged var autoScoredLow: NSNumber?
-    @NSManaged var autoScoredHigh: NSNumber?
+    @NSManaged var facedPortcullis: NSNumber?
+    @NSManaged var facedCheval: NSNumber?
+    @NSManaged var facedMoat: NSNumber?
+    @NSManaged var facedSallyPort: NSNumber?
+    @NSManaged var facedDrawbridge: NSNumber?
+    @NSManaged var facedRamparts: NSNumber?
+    @NSManaged var facedRockWall: NSNumber?
+    @NSManaged var facedRoughTerrain: String?
+    @NSManaged var facedLowBar: NSNumber?
+    @NSManaged var numCrossesPortcullis: NSNumber?
+    @NSManaged var numCrossesCheval: NSNumber?
+    @NSManaged var numCrossesMoat: NSNumber?
+    @NSManaged var numCrossesSallyPort: NSNumber?
+    @NSManaged var numCrossesDrawbridge: NSNumber?
+    @NSManaged var numCrossesRamparts: NSNumber?
+    @NSManaged var numCrossesRockWall: NSNumber?
+    @NSManaged var numCrossesRoughTerrain: NSNumber?
+    @NSManaged var numCrossesLowBar: NSNumber?
     @NSManaged var scout: Scout?
     @NSManaged var team: Team?
 

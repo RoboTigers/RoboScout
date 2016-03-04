@@ -7,8 +7,26 @@
         <attribute name="autoScoredLow" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facedCheval" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedDrawbridge" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedLowBar" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedMoat" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedPortcullis" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedRamparts" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedRockWall" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="facedRoughTerrain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facedSallyPort" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="hasAutonomous" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="matchNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numCrossesCheval" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesDrawbridge" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesLowBar" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesMoat" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesPortcullis" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesRamparts" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesRockWall" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesRoughTerrain" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="numCrossesSallyPort" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="overallRating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="speedChevalDeFrise" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
         <attribute name="speedDrawbridge" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
@@ -37,7 +55,7 @@
         <relationship name="reports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="team" inverseEntity="Report" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Report" positionX="-234" positionY="-13" width="153" height="360"/>
+        <element name="Report" positionX="-234" positionY="-13" width="153" height="630"/>
         <element name="Scout" positionX="-477" positionY="99" width="128" height="103"/>
         <element name="Team" positionX="-477" positionY="-81" width="128" height="118"/>
     </elements>
