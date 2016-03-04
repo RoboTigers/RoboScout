@@ -72,13 +72,7 @@ class SegmentedReportsTableViewController: UITableViewController {
         
         newReport.matchNumber = addNewReportViewController?.matchNumber.text
         
-        var autonomous : Int
-        switch (addNewReportViewController!.autonomous.selectedSegmentIndex) {
-        case 0: autonomous = 1
-        case 1: autonomous = 0
-        default: autonomous = 0
-        }
-        newReport.hasAutonomous = autonomous
+        newReport.hasAutonomous = addNewReportViewController!.autonomous.selectedSegmentIndex
         
         // Speed values:
         //  0 = Slow

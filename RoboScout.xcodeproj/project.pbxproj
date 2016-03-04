@@ -23,7 +23,7 @@
 		80E95AC51C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E95AC41C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift */; };
 		80EC51D81C64C3040000C00D /* AddNewTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC51D71C64C3040000C00D /* AddNewTeamViewController.swift */; };
 		80EC51DA1C64C3280000C00D /* AddNewScoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EC51D91C64C3280000C00D /* AddNewScoutViewController.swift */; };
-		849554671C7A374E00DA52FD /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849554661C7A374E00DA52FD /* Report+CoreDataProperties.swift */; };
+		80FB95F11C893B8D0089F6FB /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB95F01C893B8D0089F6FB /* Report+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 		80E95AC41C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedTeamsOrScoutsViewController.swift; sourceTree = "<group>"; };
 		80EC51D71C64C3040000C00D /* AddNewTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewTeamViewController.swift; sourceTree = "<group>"; };
 		80EC51D91C64C3280000C00D /* AddNewScoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewScoutViewController.swift; sourceTree = "<group>"; };
-		849554661C7A374E00DA52FD /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		80FB95F01C893B8D0089F6FB /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 				809856A81C5C6126004C5EEA /* Info.plist */,
 				8098569D1C5C6126004C5EEA /* Main.storyboard */,
 				80BEC8691C7733D400B78CEE /* Report.swift */,
-				849554661C7A374E00DA52FD /* Report+CoreDataProperties.swift */,
+				80FB95F01C893B8D0089F6FB /* Report+CoreDataProperties.swift */,
 				809856A01C5C6126004C5EEA /* RoboScout.xcdatamodeld */,
 				80BEC86B1C7733D400B78CEE /* Scout.swift */,
 				80BEC86A1C7733D400B78CEE /* Scout+CoreDataProperties.swift */,
@@ -178,6 +178,7 @@
 				80BEC86F1C7733D400B78CEE /* Report.swift in Sources */,
 				80BEC8771C791B4400B78CEE /* AddNewReportViewController.swift in Sources */,
 				80BEC8751C78F82200B78CEE /* SegmentedReportsTableViewController.swift in Sources */,
+				80FB95F11C893B8D0089F6FB /* Report+CoreDataProperties.swift in Sources */,
 				8098569A1C5C6126004C5EEA /* AppDelegate.swift in Sources */,
 				80EC51D81C64C3040000C00D /* AddNewTeamViewController.swift in Sources */,
 				80BEC8731C7733D400B78CEE /* Team.swift in Sources */,
@@ -185,7 +186,6 @@
 				8046160B1C846D8D00436FC8 /* SyncUtils.swift in Sources */,
 				80EC51DA1C64C3280000C00D /* AddNewScoutViewController.swift in Sources */,
 				804616091C84665700436FC8 /* TellEveryoneServiceManager.swift in Sources */,
-				849554671C7A374E00DA52FD /* Report+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

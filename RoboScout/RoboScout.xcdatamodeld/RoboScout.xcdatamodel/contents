@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Automatic">
     <entity name="Report" representedClassName=".Report" syncable="YES">
+        <attribute name="autoCrossedDefense" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="autoReachedDefense" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <attribute name="autoScoredHigh" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="autoScoredLow" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="hasAutonomous" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hasAutonomous" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="matchNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overallRating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="speedChevalDeFrise" optional="YES" attributeType="Integer 16" defaultValueString="0.0" syncable="YES"/>
@@ -33,7 +37,7 @@
         <relationship name="reports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="team" inverseEntity="Report" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Report" positionX="-234" positionY="-13" width="153" height="300"/>
+        <element name="Report" positionX="-234" positionY="-13" width="153" height="360"/>
         <element name="Scout" positionX="-477" positionY="99" width="128" height="103"/>
         <element name="Team" positionX="-477" positionY="-81" width="128" height="118"/>
     </elements>
