@@ -45,7 +45,7 @@
 		80E95AC41C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedTeamsOrScoutsViewController.swift; sourceTree = "<group>"; };
 		80EC51D71C64C3040000C00D /* AddNewTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewTeamViewController.swift; sourceTree = "<group>"; };
 		80EC51D91C64C3280000C00D /* AddNewScoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewScoutViewController.swift; sourceTree = "<group>"; };
-		80F721F91C894C6B006B09B0 /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataProperties.swift"; path = "RoboScout/Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		80F721F91C894C6B006B09B0 /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,6 @@
 		8098568D1C5C6126004C5EEA = {
 			isa = PBXGroup;
 			children = (
-				80F721F91C894C6B006B09B0 /* Report+CoreDataProperties.swift */,
 				809856981C5C6126004C5EEA /* RoboScout */,
 				809856971C5C6126004C5EEA /* Products */,
 			);
@@ -83,6 +82,7 @@
 				80EC51D91C64C3280000C00D /* AddNewScoutViewController.swift */,
 				80EC51D71C64C3040000C00D /* AddNewTeamViewController.swift */,
 				809856991C5C6126004C5EEA /* AppDelegate.swift */,
+				80F721F91C894C6B006B09B0 /* Report+CoreDataProperties.swift */,
 				809856A31C5C6126004C5EEA /* Assets.xcassets */,
 				809856A81C5C6126004C5EEA /* Info.plist */,
 				8098569D1C5C6126004C5EEA /* Main.storyboard */,

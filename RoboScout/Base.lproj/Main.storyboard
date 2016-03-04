@@ -415,6 +415,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="H6n-KO-hcO"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="portcullisStepperAction:" destination="xfR-Ra-GbL" eventType="valueChanged" id="3rk-WK-nRu"/>
+                                </connections>
                             </stepper>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ck2-6d-Kj8">
                                 <rect key="frame" x="188" y="230" width="51" height="31"/>
@@ -430,6 +433,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="09M-IY-4Ik"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="chevalStepperAction:" destination="xfR-Ra-GbL" eventType="valueChanged" id="hgT-0V-qQ4"/>
+                                </connections>
                             </stepper>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dTw-ih-SXC">
                                 <rect key="frame" x="400" y="235" width="51" height="31"/>
@@ -445,6 +451,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="2vK-jq-YdO"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="moatStepperAction:" destination="xfR-Ra-GbL" eventType="valueChanged" id="bu3-fg-WVH"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

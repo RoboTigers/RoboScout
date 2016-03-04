@@ -78,6 +78,16 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.autoScoredLow = addNewReportViewController!.autoScoredLow.on
         newReport.autoScoredHigh = addNewReportViewController!.autoScoredHigh.on
         
+        // Faced
+        newReport.facedPortcullis = addNewReportViewController!.portcullisFaced.on
+        newReport.facedCheval = addNewReportViewController!.chevalFaced.on
+        newReport.facedMoat = addNewReportViewController!.moatFaced.on
+        
+        // Num Crosses
+        newReport.numCrossesPortcullis = Int(addNewReportViewController!.portcullisNumCrossesLabel.text!)
+        newReport.numCrossesCheval = Int(addNewReportViewController!.chevalNumCrossesLabel.text!)
+        newReport.numCrossesMoat = Int(addNewReportViewController!.moatNumCrossesLabel.text!)
+        
         // Speed values:
         //  0 = Slow
         //  1 = Medium

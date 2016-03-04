@@ -44,8 +44,22 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     
     @IBOutlet weak var comments: UITextView!
+    
+    @IBAction func portcullisStepperAction(sender: AnyObject) {
+        portcullisNumCrossesLabel.text = "\(Int(portcullisStepper.value))"
+    }
+    
+    @IBAction func chevalStepperAction(sender: AnyObject) {
+        chevalNumCrossesLabel.text = "\(Int(chevalStepper.value))"
+    }
+    
+    @IBAction func moatStepperAction(sender: AnyObject) {
+        moatNumCrossesLabel.text = "\(Int(moatStepper.value))"
+    }
+    
     @IBAction func doneAddingNewReport(sender: AnyObject) {
     }
+    
     @IBAction func sliderValueChanged(sender: UISlider) {
         sliderLabel.text = NSString(format: "%1.1f", sender.value) as String
     }
