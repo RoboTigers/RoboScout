@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var selectedTeam : Team!
 
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var eventSegment: UISegmentedControl!
@@ -155,6 +157,8 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
         self.picker.dataSource = self
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+        
+        self.title = "Add Report for Team #\(selectedTeam.teamNumber!)"
         
         refreshScouts()
         populateScoutNames()

@@ -312,15 +312,27 @@ class SegmentedReportsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var destination = segue.destinationViewController as? UIViewController
+        if let navigationController = destination as? UINavigationController {
+            destination = navigationController.visibleViewController
+        }
+        if let addReportViewController = destination as? AddNewReportViewController {
+            if let segueIdentifier = segue.identifier {
+                switch segueIdentifier {
+                case "AddNewReportSegue":
+                    print ("AddNewReportSegue segue")
+                    addReportViewController.selectedTeam = self.selectedTeam
+                default:
+                    print ("Unknown segueIdentifier: \(segueIdentifier)")
+                    
+                }
+            }
+        }
     }
-    */
     
     
     private func getReportsForSelectedTeam() {
