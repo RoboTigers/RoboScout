@@ -161,12 +161,16 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         self.title = "Add Report for Team #\(selectedTeam.teamNumber!)"
         
+        print("SHARON: refresh scouts")
         refreshScouts()
+        print("SHARON: populate scout names")
         populateScoutNames()
+        print("SHARON: viewDidLoad end")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        print("SHARON: memory warning")
         // Dispose of any resources that can be recreated.
     }
     
@@ -177,21 +181,27 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     // The number of columns of data
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        print("SHARON: set num compoents of picker view to 1")
         return 1
     }
     
     // The number of rows of data
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print("SHARON: set picketdata count")
+        print("SHARON: count = \(pickerData.count)")
         return pickerData.count
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("SHARON: row = \(row)")
+        print("SHARON: pickerData at row is \(pickerData[row])")
         return pickerData[row]
     }
     
     // Catpure the picker view selection
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("SHARON: pickerView DID SELECT ROW")
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         selectedScout = scouts[row]
@@ -262,6 +272,7 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     private func populateScoutNames() {
         for s: Scout in scouts {
+            print("SHARON: populating scout name \(s.scoutName)")
             pickerData.append(s.scoutName!)
         }
     }
