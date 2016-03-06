@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		804616091C84665700436FC8 /* TellEveryoneServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */; };
 		8046160B1C846D8D00436FC8 /* SyncUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046160A1C846D8D00436FC8 /* SyncUtils.swift */; };
+		805F44291C8C649600915B4C /* ViewExistingReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F44281C8C649600915B4C /* ViewExistingReportViewController.swift */; };
 		8098569A1C5C6126004C5EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809856991C5C6126004C5EEA /* AppDelegate.swift */; };
 		8098569F1C5C6126004C5EEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8098569D1C5C6126004C5EEA /* Main.storyboard */; };
 		809856A21C5C6126004C5EEA /* RoboScout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 809856A01C5C6126004C5EEA /* RoboScout.xcdatamodeld */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TellEveryoneServiceManager.swift; sourceTree = "<group>"; };
 		8046160A1C846D8D00436FC8 /* SyncUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncUtils.swift; sourceTree = "<group>"; };
+		805F44281C8C649600915B4C /* ViewExistingReportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExistingReportViewController.swift; sourceTree = "<group>"; };
 		809856961C5C6126004C5EEA /* RoboScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoboScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		809856991C5C6126004C5EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8098569E1C5C6126004C5EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				80BEC86D1C7733D400B78CEE /* Team.swift */,
 				80BEC86C1C7733D400B78CEE /* Team+CoreDataProperties.swift */,
 				804616081C84665700436FC8 /* TellEveryoneServiceManager.swift */,
+				805F44281C8C649600915B4C /* ViewExistingReportViewController.swift */,
 			);
 			path = RoboScout;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				80BEC8711C7733D400B78CEE /* Scout.swift in Sources */,
 				80E95AC51C636E8B00247F56 /* SegmentedTeamsOrScoutsViewController.swift in Sources */,
+				805F44291C8C649600915B4C /* ViewExistingReportViewController.swift in Sources */,
 				80BEC8701C7733D400B78CEE /* Scout+CoreDataProperties.swift in Sources */,
 				80BEC8721C7733D400B78CEE /* Team+CoreDataProperties.swift in Sources */,
 				80BEC86F1C7733D400B78CEE /* Report.swift in Sources */,

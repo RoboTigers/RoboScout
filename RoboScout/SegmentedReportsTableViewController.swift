@@ -353,23 +353,82 @@ class SegmentedReportsTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        var destination = segue.destinationViewController as? UIViewController
+//        if let navigationController = destination as? UINavigationController {
+//            destination = navigationController.visibleViewController
+//        }
+//        if let addReportViewController = destination as? AddNewReportViewController {
+//            if let segueIdentifier = segue.identifier {
+//                switch segueIdentifier {
+//                case "AddNewReportSegue":
+//                    print ("AddNewReportSegue segue")
+//                    addReportViewController.selectedTeam = self.selectedTeam
+//                case "ViewExistingReportSegue":
+//                    print("ViewExistingReportSegue segue")
+//                    // Get report for selected cell
+//                    let sectionIndex = tableView.indexPathForSelectedRow!.section
+//                    let rowIndex = tableView.indexPathForSelectedRow!.row
+//                    print("selected section: \(sectionIndex) row: \(rowIndex)")
+//                    let reportForCell: Report = { // start of a closure expression that returns a Report
+//                        switch(sectionIndex) {
+//                        case 0: return nycRegReports[rowIndex]
+//                        case 1: return liReports[rowIndex]
+//                        case 2: return championshipReports[rowIndex]
+//                        default: return Report()
+//                        }
+//                        
+//                    }()
+//                    print("reportForCell: \(reportForCell)")
+//                    // Fill in destination view controller model data
+//                    addReportViewController.reportToView = reportForCell
+//                default:
+//                    print ("Unknown segueIdentifier: \(segueIdentifier)")
+//                    
+//                }
+//            }
+//        }
+//    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var destination = segue.destinationViewController as? UIViewController
+        var destination = segue.destinationViewController
         if let navigationController = destination as? UINavigationController {
-            destination = navigationController.visibleViewController
+            destination = navigationController.visibleViewController!
         }
-        if let addReportViewController = destination as? AddNewReportViewController {
-            if let segueIdentifier = segue.identifier {
-                switch segueIdentifier {
-                case "AddNewReportSegue":
+        
+        if let segueIdentifier = segue.identifier {
+            switch segueIdentifier {
+            case "AddNewReportSegue":
+                if let addReportViewController = destination as? AddNewReportViewController {
                     print ("AddNewReportSegue segue")
                     addReportViewController.selectedTeam = self.selectedTeam
-                default:
-                    print ("Unknown segueIdentifier: \(segueIdentifier)")
-                    
                 }
+            case "ViewExistingReportSegue":
+                if let viewExistingReportViewController = destination as? ViewExistingReportViewController {
+                    print("ViewExistingReportSegue segue")
+                    // Get report for selected cell
+                    let sectionIndex = tableView.indexPathForSelectedRow!.section
+                    let rowIndex = tableView.indexPathForSelectedRow!.row
+                    print("selected section: \(sectionIndex) row: \(rowIndex)")
+                    let reportForCell: Report = { // start of a closure expression that returns a Report
+                        switch(sectionIndex) {
+                        case 0: return nycRegReports[rowIndex]
+                        case 1: return liReports[rowIndex]
+                        case 2: return championshipReports[rowIndex]
+                        default: return Report()
+                        }
+                    }()
+                    print("reportForCell: \(reportForCell)")
+                    // Fill in destination view controller model data
+                    viewExistingReportViewController.reportToView = reportForCell
+                }
+            default:
+                print ("Unknown segueIdentifier: \(segueIdentifier)")
+                
             }
         }
+        
+        
     }
     
     
