@@ -435,7 +435,13 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         // Get teams from data store
         let request = NSFetchRequest(entityName: "Team")
         request.returnsObjectsAsFaults = false;
+        // Filter by year
         request.predicate = NSPredicate(format: "year = %@", yearStr)
+        // Sort by team number
+        let sectionSortDescriptor = NSSortDescriptor(key: "teamNumber", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        request.sortDescriptors = sortDescriptors
+        // Execute Request
         var results:NSArray = NSArray()
         do {
             results = try context.executeFetchRequest(request)
@@ -472,6 +478,10 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         let request = NSFetchRequest(entityName: "Scout")
         request.returnsObjectsAsFaults = false;
         request.predicate = NSPredicate(format: "year = %@", yearStr)
+        // Sort by scout name
+        let sectionSortDescriptor = NSSortDescriptor(key: "scoutName", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        request.sortDescriptors = sortDescriptors
         var results:NSArray = NSArray()
         do {
             results = try context.executeFetchRequest(request)

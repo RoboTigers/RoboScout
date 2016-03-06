@@ -354,6 +354,10 @@ class SegmentedReportsTableViewController: UITableViewController {
         request.returnsObjectsAsFaults = false;
         request.predicate = NSPredicate(format: "team = %@", selectedTeam)
         var results:NSArray = NSArray()
+        // Sort by match number
+        let sectionSortDescriptor = NSSortDescriptor(key: "matchNumber", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        request.sortDescriptors = sortDescriptors
         do {
             results = try context.executeFetchRequest(request)
         } catch _ {
