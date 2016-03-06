@@ -21,7 +21,6 @@ extension Team {
         var dict = [String: AnyObject]()
         dict["teamName"] = self.teamName
         dict["teamNumber"] = self.teamNumber
-        dict["location"] = self.location
         dict["year"] = self.year
         return dict
     }
@@ -31,7 +30,6 @@ extension Team {
         print ("teamDict = \(teamDict)")
         self.teamName = teamDict["teamName"] as? String
         self.teamNumber = teamDict["teamNumber"] as? String
-        self.location = teamDict["location"] as? String
         self.year = teamDict["year"] as? String
         print ("unpacked teamName = \(teamName)")
     }

@@ -70,8 +70,8 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         let addNewTeamViewController = unwindSegue.sourceViewController as? AddNewTeamViewController
         
         if ( ((addNewTeamViewController?.teamNumber.text)!.isEmpty)  ||
-             ((addNewTeamViewController?.teamName.text)!.isEmpty) ||
-             ((addNewTeamViewController?.location.text)!.isEmpty) ) {
+             ((addNewTeamViewController?.teamName.text)!.isEmpty) )
+              {
                 displayErrorAlertWithOk("All Team fields are required")
                 return
         }
@@ -121,7 +121,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         newTeam.teamNumber = addNewTeamViewController!.teamNumber.text
         newTeam.teamName = addNewTeamViewController!.teamName.text
         newTeam.year = String(currentYear)
-        newTeam.location = addNewTeamViewController!.location.text
+    
         
         // Persist to data store
         do {
