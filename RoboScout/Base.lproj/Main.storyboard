@@ -1634,11 +1634,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8vN-BH-QnH">
-                                <rect key="frame" x="211" y="206" width="369" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Team Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lk0-VW-5po">
                                 <rect key="frame" x="20" y="81" width="147" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1654,30 +1649,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-65-bqw">
-                                <rect key="frame" x="20" y="215" width="147" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="8vN-BH-QnH" secondAttribute="trailing" id="3TH-x1-I9u"/>
                             <constraint firstItem="iG2-eZ-jPC" firstAttribute="trailing" secondItem="lk0-VW-5po" secondAttribute="trailing" id="4Sv-Al-LaE"/>
-                            <constraint firstItem="iG2-eZ-jPC" firstAttribute="trailing" secondItem="dfD-65-bqw" secondAttribute="trailing" id="B35-c1-DGm"/>
-                            <constraint firstItem="KZ7-o1-WAq" firstAttribute="leading" secondItem="8vN-BH-QnH" secondAttribute="leading" id="Bul-xg-Hgk"/>
-                            <constraint firstItem="8vN-BH-QnH" firstAttribute="top" secondItem="KZ7-o1-WAq" secondAttribute="bottom" constant="43" id="Cen-rM-v9h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KZ7-o1-WAq" secondAttribute="trailing" id="FIk-6p-WYM"/>
                             <constraint firstItem="KZ7-o1-WAq" firstAttribute="leading" secondItem="iG2-eZ-jPC" secondAttribute="trailing" constant="44" id="Kfi-rf-Msl"/>
                             <constraint firstItem="KZ7-o1-WAq" firstAttribute="top" secondItem="bIy-Ti-toC" secondAttribute="top" constant="133" id="L0h-Ab-0lz"/>
                             <constraint firstItem="iG2-eZ-jPC" firstAttribute="top" secondItem="lk0-VW-5po" secondAttribute="bottom" constant="40" id="Mmt-wn-QC4"/>
                             <constraint firstItem="iG2-eZ-jPC" firstAttribute="leading" secondItem="lk0-VW-5po" secondAttribute="leading" id="Q42-8Q-wLZ"/>
                             <constraint firstItem="KZ7-o1-WAq" firstAttribute="leading" secondItem="hN3-cq-5ud" secondAttribute="leading" id="SEB-f9-8mr"/>
-                            <constraint firstItem="iG2-eZ-jPC" firstAttribute="leading" secondItem="dfD-65-bqw" secondAttribute="leading" id="SSb-G5-sVr"/>
                             <constraint firstItem="KZ7-o1-WAq" firstAttribute="top" secondItem="hN3-cq-5ud" secondAttribute="bottom" constant="31" id="Tcg-lc-znx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hN3-cq-5ud" secondAttribute="trailing" id="Z7m-ps-SPC"/>
-                            <constraint firstItem="dfD-65-bqw" firstAttribute="top" secondItem="iG2-eZ-jPC" secondAttribute="bottom" constant="52" id="cZn-zY-ERU"/>
                             <constraint firstItem="iG2-eZ-jPC" firstAttribute="leading" secondItem="bIy-Ti-toC" secondAttribute="leadingMargin" id="md1-MO-MGo"/>
                             <constraint firstItem="iG2-eZ-jPC" firstAttribute="bottom" secondItem="KZ7-o1-WAq" secondAttribute="bottom" id="yDz-3n-cNf"/>
                         </constraints>
@@ -1698,7 +1681,6 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="location" destination="8vN-BH-QnH" id="SrK-Ec-f5O"/>
                         <outlet property="teamName" destination="KZ7-o1-WAq" id="n7x-m5-Jyf"/>
                         <outlet property="teamNumber" destination="hN3-cq-5ud" id="f2r-bK-ny7"/>
                     </connections>
