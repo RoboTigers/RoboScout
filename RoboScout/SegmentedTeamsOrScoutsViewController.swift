@@ -472,7 +472,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         // Filter by year
         request.predicate = NSPredicate(format: "year = %@", yearStr)
         // Sort by team number
-        let sectionSortDescriptor = NSSortDescriptor(key: "teamNumber", ascending: true)
+        let sectionSortDescriptor = NSSortDescriptor(key: "teamNumber", ascending: true, selector: "localizedStandardCompare:")
         let sortDescriptors = [sectionSortDescriptor]
         request.sortDescriptors = sortDescriptors
         // Execute Request
