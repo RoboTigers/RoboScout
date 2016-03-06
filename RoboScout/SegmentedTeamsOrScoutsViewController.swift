@@ -36,12 +36,37 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
         }
         print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
+        
+        var doSync: Bool = true
+        
         // Add popup here
+        let popupMessage = "Sync with all devices matching name pattern: \(myDeviceSubstringUpToDash)"
+        let refreshAlert = UIAlertController(title: "Sync", message: popupMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
+        refreshAlert.addAction(UIAlertAction(title: "Sync", style: .Default, handler: { (action: UIAlertAction!) in
+            print("Do the sync")
+            doSync = true
+            self.pushTeams()
+            self.pushScouts()
+            self.pushReports()
+            return
+        }))
         
-        pushTeams()
-        pushScouts()
-        pushReports()
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            print("Cancel the sync")
+            doSync = false
+            return
+        }))
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(refreshAlert, animated: true, completion: nil)
+        })
+        
+//        if (doSync) {
+//            pushTeams()
+//            pushScouts()
+//            pushReports()
+//        }
     }
     
     @IBAction func addNewTeamOrScoutAction(sender: UIBarButtonItem) {
