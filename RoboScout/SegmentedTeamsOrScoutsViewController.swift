@@ -62,11 +62,6 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             self.presentViewController(refreshAlert, animated: true, completion: nil)
         })
         
-//        if (doSync) {
-//            pushTeams()
-//            pushScouts()
-//            pushReports()
-//        }
     }
     
     @IBAction func addNewTeamOrScoutAction(sender: UIBarButtonItem) {

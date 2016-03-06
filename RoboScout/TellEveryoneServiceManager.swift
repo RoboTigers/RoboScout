@@ -83,17 +83,17 @@ class TellEveryoneServiceManager: NSObject {
     func sendData(data : NSData) {
         print("sending data to \(session.connectedPeers.count) peers")
         
-        // REMOVE THIS
-        let myDevice : UIDevice = UIDevice.currentDevice();
-        let myDeviceName = myDevice.name
-        print("My device name is \(myDeviceName)")
-        let myDeviceDashIdx = myDeviceName.rangeOfString("-", options: .BackwardsSearch)?.startIndex
-        var myDeviceSubstringUpToDash = ""
-        if (myDeviceDashIdx != nil) {
-            myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
-        }
-        print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
-        // END REMOVE THIS
+//        // REMOVE THIS
+//        let myDevice : UIDevice = UIDevice.currentDevice();
+//        let myDeviceName = myDevice.name
+//        print("My device name is \(myDeviceName)")
+//        let myDeviceDashIdx = myDeviceName.rangeOfString("-", options: .BackwardsSearch)?.startIndex
+//        var myDeviceSubstringUpToDash = ""
+//        if (myDeviceDashIdx != nil) {
+//            myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
+//        }
+//        print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
+//        // END REMOVE THIS
         
         if session.connectedPeers.count > 0 {
             // Get device name of current device and grab the substring up to the last dash
@@ -118,17 +118,17 @@ class TellEveryoneServiceManager: NSObject {
                 // then allow the sync.
                 if (myDeviceSubstringUpToDash == peerSubstringUpToDash) {
                     print("send to \(peer)")
-                    //TODO: Move the var+do up to here
+                    var error : NSError?
+                    do {
+                        try self.session.sendData(data, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable)
+                    } catch let error1 as NSError {
+                        error = error1
+                        print("\(error)")
+                    }
                 }
             }
             
-            var error : NSError?
-            do {
-                try self.session.sendData(data, toPeers: session.connectedPeers, withMode: MCSessionSendDataMode.Reliable)
-            } catch let error1 as NSError {
-                error = error1
-                print("\(error)")
-            }
+
         }
         
     }
