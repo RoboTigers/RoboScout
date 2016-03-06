@@ -60,6 +60,22 @@ class ViewExistingReportViewController: UIViewController {
         
         portcullisDetails.text = createDefenseDetailsString(reportToView.facedPortcullis!, speed: reportToView.speedPortcullis!.integerValue, crosses: reportToView.numCrossesPortcullis!)
         
+        chevalDeFriseDetails.text = createDefenseDetailsString(reportToView.facedCheval!, speed: reportToView.speedChevalDeFrise!.integerValue, crosses: reportToView.numCrossesCheval!)
+        
+        moatDetails.text = createDefenseDetailsString(reportToView.facedMoat!, speed: reportToView.speedMoat!.integerValue, crosses: reportToView.numCrossesMoat!)
+        
+        sallyPortDetails.text = createDefenseDetailsString(reportToView.facedSallyPort!, speed: reportToView.speedSallyPort!.integerValue, crosses: reportToView.numCrossesSallyPort!)
+        
+        drawbridgeDetails.text = createDefenseDetailsString(reportToView.facedDrawbridge!, speed: reportToView.speedDrawbridge!.integerValue, crosses: reportToView.numCrossesDrawbridge!)
+        
+        rampartsDetails.text = createDefenseDetailsString(reportToView.facedRamparts!, speed: reportToView.speedRamparts!.integerValue, crosses: reportToView.numCrossesRamparts!)
+        
+        rockWallDetails.text = createDefenseDetailsString(reportToView.facedRockWall!, speed: reportToView.speedRockWall!.integerValue, crosses: reportToView.numCrossesRockWall!)
+        
+        roughTerrainDetails.text = createDefenseDetailsString(reportToView.facedRoughTerrain!, speed: reportToView.speedRoughTerrain!.integerValue, crosses: reportToView.numCrossesRoughTerrain!)
+        
+        lowBarDetails.text = createDefenseDetailsString(reportToView.facedLowBar!, speed: reportToView.speedLowBar!.integerValue, crosses: reportToView.numCrossesLowBar!)
+        
         
         self.title = "\(reportToView.event!) Match \(reportToView.matchNumber!) (\(reportToView.scout!.scoutName!))"
     }
