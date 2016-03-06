@@ -24,8 +24,21 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     @IBOutlet weak var segmentedTeamOrScoutControl: UISegmentedControl!
     @IBOutlet weak var teamOrScoutTableView: UITableView!
     
-    // Push data from this device to all connected devices
+    // Push data from this device to all connected devices that match pattern of sending device
     @IBAction func pushData(sender: AnyObject) {
+        
+        let myDevice : UIDevice = UIDevice.currentDevice();
+        let myDeviceName = myDevice.name
+        print("My device name is \(myDeviceName)")
+        let myDeviceDashIdx = myDeviceName.rangeOfString("-", options: .BackwardsSearch)?.startIndex
+        var myDeviceSubstringUpToDash = ""
+        if (myDeviceDashIdx != nil) {
+            myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
+        }
+        print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
+        
+        
+        
         pushTeams()
         pushScouts()
         pushReports()
