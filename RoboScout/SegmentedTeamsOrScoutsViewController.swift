@@ -36,7 +36,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
             myDeviceSubstringUpToDash = myDeviceName.substringToIndex(myDeviceDashIdx!)
         }
         print("Checking for peers with this string before the last dash: \(myDeviceSubstringUpToDash)")
-        
+        // Add popup here
         
         
         pushTeams()
