@@ -739,14 +739,72 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
         // First check that received report is not already in the data store
-        let scoutName:String = dict["scoutName"] as! String
-        let request = NSFetchRequest(entityName: "Scout")
+        // We determine this by using the unique composite key for a report:
+        //      event + type + match + team + scout
+        
+        // Check for existing Report entity matching our composite key
+        let request = NSFetchRequest(entityName: "Report")
         request.returnsObjectsAsFaults = false;
         
-        // Get current year (sync only supported for "current" year
+        // Get team object
         let currentYear = getCurrentYear()
+        let requestTeam = NSFetchRequest(entityName: "Team")
+        requestTeam.returnsObjectsAsFaults = false;
+        let keyValuesForTeam: [String: AnyObject] = ["teamNumber" : dict["teamNumber"]!, "year" : currentYear]
+        var predicatesTeam = [NSPredicate]()
+        for (key, value) in keyValuesForTeam {
+            print("Adding key (\(key)) and value (\(value)) to predicate")
+            let predicateTeam = NSPredicate(format: "%K = %@", key, value as! NSObject)
+            predicatesTeam.append(predicateTeam)
+        }
+        let compoundPredicateTeam = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicatesTeam)
+        requestTeam.predicate = compoundPredicateTeam
         
-        let keyValues: [String: AnyObject] = ["scoutName" : scoutName, "year" : currentYear]
+        var resultsTeam:NSArray = NSArray()
+        do {
+            resultsTeam = try context.executeFetchRequest(requestTeam)
+        } catch _ {
+            print("Error fetching team with number \(dict["teamNumber"])")
+        }
+        
+        if resultsTeam.count == 0 {
+            print("Unable to find team \(dict["teamNumber"]) for received report")
+            return
+        }
+        let receivedTeam : Team = resultsTeam[0] as! Team
+        
+        
+        // Get scout object
+        let requestScout = NSFetchRequest(entityName: "Scout")
+        requestScout.returnsObjectsAsFaults = false;
+        let keyValuesForScout: [String: AnyObject] = ["scoutName" : dict["scoutName"]!, "year" : currentYear]
+        var predicatesScout = [NSPredicate]()
+        for (key, value) in keyValuesForScout {
+            print("Adding key (\(key)) and value (\(value)) to predicate")
+            let predicateScout = NSPredicate(format: "%K = %@", key, value as! NSObject)
+            predicatesScout.append(predicateScout)
+        }
+        let compoundPredicateScout = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicatesScout)
+        requestScout.predicate = compoundPredicateScout
+        
+        var resultsScout:NSArray = NSArray()
+        do {
+            resultsScout = try context.executeFetchRequest(requestScout)
+        } catch _ {
+            print("Error fetching Scout with name \(dict["scoutName"])")
+        }
+        
+        if resultsScout.count == 0 {
+            print("Unable to find Scout \(dict["scoutName"]) for received report")
+            return
+        }
+        let receivedScout : Scout = resultsScout[0] as! Scout
+        
+        
+        // Build composite key to search for an already existing report
+        let keyValues: [String: AnyObject] = ["event" : dict["event"]!,
+            "matchNumber" : dict["matchNumber"]!,
+            "team" : receivedTeam, "scout" : receivedScout]
         var predicates = [NSPredicate]()
         for (key, value) in keyValues {
             print("Adding key (\(key)) and value (\(value)) to predicate")
@@ -760,22 +818,23 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
         do {
             results = try context.executeFetchRequest(request)
         } catch _ {
-            print("Error fetching scout with unique name \(scoutName)")
+            print("Error fetching report with event \(dict["event"]) and match \(dict["matchNumber"]) and team \(receivedTeam.teamNumber) and scout \(receivedScout.scoutName)")
         }
         
         if results.count > 0 {
-            // Ignore duplicate received team
+            print("Report already exists so not adding it to store as part of sync")
             return
         }
         
         
-        // Create new Scout in data store
-        let entity = NSEntityDescription.entityForName("Scout", inManagedObjectContext: context)
-        let receivedScout = Team(entity: entity!, insertIntoManagedObjectContext: context)
         
-        // Get received scout from json data
-        receivedScout.loadFromJson(dict)
-        print ("receivedScout = \(receivedScout)")
+        // Create new Report in data store
+        let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: context)
+        let receivedReport = Report(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        // Get received report from json data
+        receivedReport.loadFromJson(dict, context: context)
+        print ("receivedReport = \(receivedReport)")
         
         // Persist to data store
         do {
@@ -784,7 +843,7 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
             // Handle core data error
             print("Error saving new scout")
         }
-        print("receivedScout: \(receivedScout)")
+        print("receivedReport: \(receivedReport)")
         print("Object saved successfully")
         
         NSOperationQueue.mainQueue().addOperationWithBlock {
