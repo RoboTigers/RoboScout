@@ -28,6 +28,7 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
     @IBAction func pushData(sender: AnyObject) {
         pushTeams()
         pushScouts()
+        pushReports()
     }
     
     @IBAction func addNewTeamOrScoutAction(sender: UIBarButtonItem) {
@@ -500,6 +501,38 @@ class SegmentedTeamsOrScoutsViewController: UIViewController, UITableViewDataSou
         }
     }
     
+    private func getAllReports(context:NSManagedObjectContext) -> [Report] {
+        // Getting all reports, even reports which may not have team/scout from current year
+        // In future perhaps add year to Report entity to improve performance of sync util
+        // or else sync reports while syncing each team.
+        var reports = [Report]()
+        
+        // Get reports from data store
+        let request = NSFetchRequest(entityName: "Report")
+        request.returnsObjectsAsFaults = false;
+        
+        // Execute request
+        var results:NSArray = NSArray()
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch _ {
+            print("Error fetching reports")
+            return reports
+        }
+        
+        if results.count > 0 {
+            for report in results {
+                let r = report as! Report
+                reports.append(r)
+            }
+        } else {
+            print("No reports found")
+            return reports
+        }
+        
+        return reports
+    }
+    
     private func getCurrentYear() -> Int {
         // Get current year
         let date = NSDate()
@@ -732,6 +765,43 @@ extension SegmentedTeamsOrScoutsViewController : TellEveryoneServiceManagerDeleg
             }
             tellEveryoneService.sendData(jsonToSend)
             print ("Sent scout")
+        }
+    }
+    
+    func pushReports() {
+        
+        // Get data store context
+        let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.managedObjectContext
+        
+        // Get all reports
+        let reports = getAllReports(context)
+        if (reports.count == 0) {
+            print("No reports found so no reports to push")
+            return
+        }
+        
+        // Get current year (sync only supported for "current" year
+        let currentYear = getCurrentYear()
+
+        // Send all Reports (for current year)
+        for reportToSend in reports {
+            if (reportToSend.team?.year == String(currentYear)) {
+                let reportDict : [String: AnyObject] = reportToSend.toDictionary()
+                var dictToSend = [String: AnyObject]()
+                dictToSend["entityDiscriminator"] = "REPORT"
+                dictToSend["entityObject"] = reportDict
+                print ("Sending: dictToSend = \(dictToSend)")
+                var jsonToSend : NSData = NSData()
+                do {
+                    try jsonToSend = NSJSONSerialization.dataWithJSONObject(dictToSend, options: NSJSONWritingOptions.PrettyPrinted)
+                } catch {
+                    print("json error: \(error)")
+                    return
+                }
+                tellEveryoneService.sendData(jsonToSend)
+                print ("Sent report")
+            }
         }
     }
     
