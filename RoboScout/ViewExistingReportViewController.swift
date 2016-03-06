@@ -16,6 +16,9 @@ class ViewExistingReportViewController: UIViewController {
     @IBOutlet weak var event: UILabel!
     @IBOutlet weak var matchNumber: UILabel!
     @IBOutlet weak var scoutName: UILabel!
+    @IBOutlet weak var autonomous: UILabel!
+    @IBOutlet weak var autonomousDetails: UILabel!
+    @IBOutlet weak var portcullisDetails: UILabel!
     
 
     override func viewDidLoad() {
@@ -26,6 +29,47 @@ class ViewExistingReportViewController: UIViewController {
         event.text = reportToView.event
         matchNumber.text = reportToView.matchNumber
         scoutName.text = reportToView.scout?.scoutName
+        
+        var autonomousDetailStr: String = ""
+        if (reportToView.hasAutonomous == 1) {
+            autonomous.text = "Yes"
+            if (reportToView.autoReachedDefense == 1) {
+                autonomousDetailStr += " Reached"
+            }
+            if (reportToView.autoCrossedDefense == 1) {
+                autonomousDetailStr += " Crossed"
+            }
+            if (reportToView.autoScoredLow == 1) {
+                autonomousDetailStr += " ScoredLow"
+            }
+            if (reportToView.autoScoredHigh == 1) {
+                autonomousDetailStr += " ScoredHigh"
+            }
+        } else {
+            autonomous.text = "No"
+        }
+        autonomousDetails.text = autonomousDetailStr
+        
+        var defenseDetailStr: String = ""
+        if (reportToView.facedPortcullis == 1) {
+            defenseDetailStr += " Faced,  "
+            let speed = reportToView.speedPortcullis!.integerValue
+            switch (speed) {
+            case 0: defenseDetailStr += "Slow "
+            case 1: defenseDetailStr += "Medium "
+            case 2: defenseDetailStr += "Fast "
+            default: break
+            }
+        } else {
+           
+            defenseDetailStr += " Not Faced"
+        }
+        
+        defenseDetailStr += " \(reportToView.numCrossesPortcullis!) crosses"
+        portcullisDetails.text = defenseDetailStr
+        
+        defenseDetailStr = ""
+        
         
         self.title = "\(reportToView.event!) Match \(reportToView.matchNumber!) (\(reportToView.scout!.scoutName!))"
     }
