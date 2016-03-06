@@ -259,10 +259,53 @@ class SegmentedReportsTableViewController: UITableViewController {
             default: return cell
         }
 
-        let overallRating = reportForCell.overallRating!.stringValue
-        cell.textLabel?.text = "Match # " + (reportsForSelectedTeam[indexPath.row].matchNumber)! + " (" + overallRating + ")"
+        
+        //below is what is in the parenthesis after the match #
+        
+        var parenStr:String = ""
+        if (reportForCell.numCrossesPortcullis?.integerValue > 0) {
+            parenStr += "| Portcullis "
+        }
+        
+        if (reportForCell.numCrossesCheval?.integerValue > 0) {
+            parenStr += "| Cheval De Frise "
+        }
+        
+        if (reportForCell.numCrossesDrawbridge?.integerValue > 0){
+            parenStr += "| DrawBridge "
+        }
+        
+        if (reportForCell.numCrossesLowBar?.integerValue > 0){
+            parenStr += "| Low Bar "
+        }
+        
+        if (reportForCell.numCrossesMoat?.integerValue > 0){
+            parenStr += "| Moat "
+        }
+        
+        if (reportForCell.numCrossesRamparts?.integerValue > 0){
+            parenStr += "| Ramparts "
+        }
+        
+        if (reportForCell.numCrossesRockWall?.integerValue > 0){
+            parenStr += "| Rock Wall "
+        }
+        
+        if (reportForCell.numCrossesRoughTerrain?.integerValue > 0){
+            parenStr += "| Rough Terrain "
+        }
+        
+        if (reportForCell.numCrossesSallyPort?.integerValue > 0){
+            parenStr += "| Sally Port "
+        }
+        
+        
+    
+        cell.textLabel?.text = "Match # " + (reportsForSelectedTeam[indexPath.row].matchNumber)! + " (" + parenStr + ")"
         cell.detailTextLabel?.text = (reportForCell.scout?.scoutName)!
         return cell
+        
+        
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
