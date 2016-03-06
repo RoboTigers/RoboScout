@@ -27,6 +27,15 @@ class ViewExistingReportViewController: UIViewController {
     @IBOutlet weak var rockWallDetails: UILabel!
     @IBOutlet weak var roughTerrainDetails: UILabel!
     @IBOutlet weak var lowBarDetails: UILabel!
+    @IBOutlet weak var lowScores: UILabel!
+    @IBOutlet weak var highAttempts: UILabel!
+    @IBOutlet weak var highScores: UILabel!
+    @IBOutlet weak var challanged: UILabel!
+    @IBOutlet weak var scaled: UILabel!
+    @IBOutlet weak var captured: UILabel!
+    @IBOutlet weak var comments: UILabel!
+    @IBOutlet weak var technicalFouls: UILabel!
+    @IBOutlet weak var regularFouls: UILabel!
     
 
     override func viewDidLoad() {
@@ -75,6 +84,33 @@ class ViewExistingReportViewController: UIViewController {
         roughTerrainDetails.text = createDefenseDetailsString(reportToView.facedRoughTerrain!, speed: reportToView.speedRoughTerrain!.integerValue, crosses: reportToView.numCrossesRoughTerrain!)
         
         lowBarDetails.text = createDefenseDetailsString(reportToView.facedLowBar!, speed: reportToView.speedLowBar!.integerValue, crosses: reportToView.numCrossesLowBar!)
+        
+        lowScores.text = (String)(reportToView.numScoreSuccessLow!.integerValue)
+        highAttempts.text = (String)(reportToView.numScoreAttemptsHigh!.integerValue)
+        highScores.text = (String)(reportToView.numScoreSuccessesHigh!.integerValue)
+        
+        if (reportToView.didChallange == 1) {
+            challanged.text = "Yes"
+        } else {
+            challanged.text = "No"
+        }
+        
+        if (reportToView.didScale == 1) {
+            scaled.text = "Yes"
+        } else {
+            scaled.text = "No"
+        }
+        
+        if (reportToView.didCapture == 1) {
+            captured.text = "Yes"
+        } else {
+            captured.text = "No"
+        }
+        
+        technicalFouls.text = (String)(reportToView.numFoulsTechnical!.integerValue)
+        regularFouls.text = (String)(reportToView.numFoulsRegular!.integerValue)
+        
+        comments.text = reportToView.comments
         
         
         self.title = "\(reportToView.event!) Match \(reportToView.matchNumber!) (\(reportToView.scout!.scoutName!))"
