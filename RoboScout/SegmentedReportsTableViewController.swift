@@ -48,6 +48,51 @@ class SegmentedReportsTableViewController: UITableViewController {
         let appDel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.managedObjectContext
         
+        
+        // The report must not already exist
+        // We determine this by using the unique composite key for a report:
+        //      event + type + match + team + scout
+        
+        // Get event from input screen
+        var eventStr : String
+        switch (addNewReportViewController!.eventSegment.selectedSegmentIndex) {
+            case 0: eventStr = "NYC Regional"
+            case 1: eventStr = "Long Island"
+            case 2: eventStr = "Championship"
+            default: eventStr = "Unknown"
+        }
+        
+        // Check for existing Report entity matching our composite key
+        let request = NSFetchRequest(entityName: "Report")
+        request.returnsObjectsAsFaults = false;
+        
+        let keyValues: [String: AnyObject] = ["event" : eventStr, "matchNumber" : addNewReportViewController!.matchNumber.text!,
+            "team" : selectedTeam, "scout" : addNewReportViewController!.selectedScout]
+        var predicates = [NSPredicate]()
+        for (key, value) in keyValues {
+            print("Adding key (\(key)) and value (\(value)) to predicate")
+            let predicate = NSPredicate(format: "%K = %@", key, value as! NSObject)
+            predicates.append(predicate)
+        }
+        let compoundPredicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: predicates)
+        request.predicate = compoundPredicate
+        
+        var results:NSArray = NSArray()
+        do {
+            results = try context.executeFetchRequest(request)
+        } catch _ {
+            print("Error fetching report with event \(eventStr) and match \(addNewReportViewController!.matchNumber!)")
+        }
+        
+        if results.count > 0 {
+            displayErrorAlertWithOk("Report for team \(selectedTeam.teamNumber!) in match \(addNewReportViewController!.matchNumber!.text!) by scout \(addNewReportViewController?.selectedScout.scoutName!) at event \(eventStr) already exists")
+            return
+        }
+        
+        
+        // Report does not already exist so add new team object to data store
+
+        
         // Prepare data store object
         let entity = NSEntityDescription.entityForName("Report", inManagedObjectContext: context)
         let newReport = Report(entity: entity!, insertIntoManagedObjectContext: context)
@@ -56,13 +101,6 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.scout = addNewReportViewController!.selectedScout
         newReport.team = selectedTeam
         
-        var eventStr : String
-        switch (addNewReportViewController!.eventSegment.selectedSegmentIndex) {
-        case 0: eventStr = "NYC Regional"
-        case 1: eventStr = "Long Island"
-        case 2: eventStr = "Championship"
-        default: eventStr = "Unknown"
-        }
         newReport.event = eventStr
         
         // For now we only support "Stand" reports (not "Pit")
