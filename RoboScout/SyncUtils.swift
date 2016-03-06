@@ -67,6 +67,7 @@ extension Report {
     func toDictionary() -> [String: AnyObject] {
         var dict = [String: AnyObject]()
         
+        dict["autoSpybot"] = self.autoSpybot
         dict["autoCrossedDefense"] = self.autoCrossedDefense
         dict["autoReachedDefense"] = self.autoReachedDefense
         dict["autoScoredHigh"] = self.autoScoredHigh
@@ -127,7 +128,7 @@ extension Report {
         print ("reportDict = \(reportDict)")
         
         // Add attributes
-        
+        self.autoSpybot = reportDict["autoSpybot"] as? NSNumber
         self.autoCrossedDefense = reportDict["autoCrossedDefense"] as? NSNumber
         self.autoReachedDefense = reportDict["autoReachedDefense"] as? NSNumber
         self.autoScoredHigh = reportDict["autoScoredHigh"] as? NSNumber

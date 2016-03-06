@@ -14,6 +14,7 @@ import CoreData
 
 extension Report {
 
+    @NSManaged var autoSpybot: NSNumber?
     @NSManaged var autoCrossedDefense: NSNumber?
     @NSManaged var autoReachedDefense: NSNumber?
     @NSManaged var autoScoredHigh: NSNumber?

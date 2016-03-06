@@ -62,6 +62,9 @@ class ViewExistingReportViewController: UIViewController {
             if (reportToView.autoScoredHigh == 1) {
                 autonomousDetailStr += " ScoredHigh"
             }
+            if (reportToView.autoSpybot == 1) {
+                autonomousDetailStr += " Sybot"
+            }
         } else {
             autonomous.text = "No"
         }

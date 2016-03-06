@@ -111,6 +111,7 @@ class SegmentedReportsTableViewController: UITableViewController {
         newReport.matchNumber = addNewReportViewController?.matchNumber.text
         
         newReport.hasAutonomous = addNewReportViewController!.autonomous.selectedSegmentIndex
+        newReport.autoSpybot = addNewReportViewController!.spybot.on
         newReport.autoReachedDefense = addNewReportViewController!.autoReachedDefense.on
         newReport.autoCrossedDefense = addNewReportViewController!.autoCrossedDefense.on
         newReport.autoScoredLow = addNewReportViewController!.autoScoredLow.on

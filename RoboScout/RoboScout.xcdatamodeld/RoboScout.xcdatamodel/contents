@@ -5,6 +5,7 @@
         <attribute name="autoReachedDefense" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="autoScoredHigh" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="autoScoredLow" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="autoSpybot" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="didCapture" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="didChallange" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -63,7 +64,7 @@
         <relationship name="reports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Report" inverseName="team" inverseEntity="Report" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Report" positionX="-234" positionY="-13" width="153" height="750"/>
+        <element name="Report" positionX="-234" positionY="-13" width="153" height="763"/>
         <element name="Scout" positionX="-477" positionY="99" width="128" height="103"/>
         <element name="Team" positionX="-477" positionY="-81" width="128" height="118"/>
     </elements>
