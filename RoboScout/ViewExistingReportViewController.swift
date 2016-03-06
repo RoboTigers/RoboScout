@@ -19,6 +19,14 @@ class ViewExistingReportViewController: UIViewController {
     @IBOutlet weak var autonomous: UILabel!
     @IBOutlet weak var autonomousDetails: UILabel!
     @IBOutlet weak var portcullisDetails: UILabel!
+    @IBOutlet weak var chevalDeFriseDetails: UILabel!
+    @IBOutlet weak var moatDetails: UILabel!
+    @IBOutlet weak var sallyPortDetails: UILabel!
+    @IBOutlet weak var drawbridgeDetails: UILabel!
+    @IBOutlet weak var rampartsDetails: UILabel!
+    @IBOutlet weak var rockWallDetails: UILabel!
+    @IBOutlet weak var roughTerrainDetails: UILabel!
+    @IBOutlet weak var lowBarDetails: UILabel!
     
 
     override func viewDidLoad() {
@@ -50,28 +58,31 @@ class ViewExistingReportViewController: UIViewController {
         }
         autonomousDetails.text = autonomousDetailStr
         
-        var defenseDetailStr: String = ""
-        if (reportToView.facedPortcullis == 1) {
-            defenseDetailStr += " Faced,  "
-            let speed = reportToView.speedPortcullis!.integerValue
-            switch (speed) {
-            case 0: defenseDetailStr += "Slow "
-            case 1: defenseDetailStr += "Medium "
-            case 2: defenseDetailStr += "Fast "
-            default: break
-            }
-        } else {
-           
-            defenseDetailStr += " Not Faced"
-        }
-        
-        defenseDetailStr += " \(reportToView.numCrossesPortcullis!) crosses"
-        portcullisDetails.text = defenseDetailStr
-        
-        defenseDetailStr = ""
+        portcullisDetails.text = createDefenseDetailsString(reportToView.facedPortcullis!, speed: reportToView.speedPortcullis!.integerValue, crosses: reportToView.numCrossesPortcullis!)
         
         
         self.title = "\(reportToView.event!) Match \(reportToView.matchNumber!) (\(reportToView.scout!.scoutName!))"
+    }
+    
+    func createDefenseDetailsString(faced: NSNumber, speed: Int, crosses: NSNumber) -> String {
+        var details: String = ""
+        
+        if (faced == 1) {
+            details += " Faced,  "
+            switch (speed) {
+            case 0: details += "Slow "
+            case 1: details += "Medium "
+            case 2: details += "Fast "
+            default: break
+            }
+        } else {
+            
+            details += " Not Faced"
+        }
+        
+        details += " \(crosses) crosses"
+        
+        return details
     }
 
     override func didReceiveMemoryWarning() {
