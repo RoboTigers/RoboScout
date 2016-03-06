@@ -12,7 +12,7 @@ class AddNewTeamViewController: UIViewController {
 
     @IBOutlet weak var teamNumber: UITextField!
     @IBOutlet weak var teamName: UITextField!
-    @IBOutlet weak var location: UITextField!
+
     
     @IBAction func doneAddingNewTeam(sender: AnyObject) {
     }
@@ -27,7 +27,7 @@ class AddNewTeamViewController: UIViewController {
     func dismissKeyboard() {
         teamName.resignFirstResponder()
         teamNumber.resignFirstResponder()
-        location.resignFirstResponder()
+     
     }
 
     override func didReceiveMemoryWarning() {
