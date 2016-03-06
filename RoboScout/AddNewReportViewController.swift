@@ -160,17 +160,13 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
         
         self.title = "Add Report for Team #\(selectedTeam.teamNumber!)"
-        
-        print("SHARON: refresh scouts")
+ 
         refreshScouts()
-        print("SHARON: populate scout names")
         populateScoutNames()
-        print("SHARON: viewDidLoad end")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("SHARON: memory warning")
         // Dispose of any resources that can be recreated.
     }
     
@@ -194,14 +190,12 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("SHARON: row = \(row)")
-        print("SHARON: pickerData at row is \(pickerData[row])")
+        print("SHARON: pickerData at \(row) is \(pickerData[row])")
         return pickerData[row]
     }
     
     // Catpure the picker view selection
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("SHARON: pickerView DID SELECT ROW")
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         selectedScout = scouts[row]
@@ -272,7 +266,6 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     private func populateScoutNames() {
         for s: Scout in scouts {
-            print("SHARON: populating scout name \(s.scoutName)")
             pickerData.append(s.scoutName!)
         }
     }
