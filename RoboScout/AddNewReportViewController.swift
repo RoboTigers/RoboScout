@@ -153,6 +153,8 @@ class AddNewReportViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lowBarFaced.on = true;
 
         self.picker.delegate = self
         self.picker.dataSource = self
